@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les catégories{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+            <tr class="table-warning">
+                <th>ID</th>
+                <th>Nom</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td class="py-12">
+                        <div class="d-flex align-items-center">
+                            {{ category.id }}
+                        </div>
+                    </td>
+                    <td class="py-12">
+                        <div class="d-flex align-items-center">
+                            {{ category.name }}
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
