@@ -17,6 +17,8 @@ Cloner le projet et exécuter les lignes de commandes suivantes :
 * npm install
 * npm run build
 
+* npm install bootstrap --save-dev 
+
 # Mise à jour
 * composer install
 * symfony console doctrine:schema:update --force
