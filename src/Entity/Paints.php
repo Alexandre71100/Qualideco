@@ -27,10 +27,10 @@ class Paints
     #[ORM\Column(type: 'string', length: 255)]
     private $cover;
 
-    #[ORM\Column(type: 'string', length: 150)]
+    #[ORM\Column(type: 'string', length: 255)]
     private $destination;
 
-    #[ORM\Column(type: 'string', length: 150)]
+    #[ORM\Column(type: 'string', length: 255)]
     private $features;
 
     #[ORM\Column(type: 'text')]
