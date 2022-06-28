@@ -21,7 +21,7 @@ class Paints
     #[ORM\OneToMany(mappedBy: 'no', targetEntity: subCategory::class)]
     private $subCategory;
 
-    #[ORM\Column(type: 'string', length: 50)]
+    #[ORM\Column(type: 'string', length: 80)]
     private $title;
 
     #[ORM\Column(type: 'string', length: 255)]
