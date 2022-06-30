@@ -1,0 +1,16 @@
+.carousel{
+    width:50%;
+    height:50%;
+}
+#navbarSupportedContent{
+        display: flex;
+        align-items:center;
+        justify-content: end;
+        gap: 50px;
+        list-style: none;
+        margin-left: 50px;
+}
+form{
+    display: flex;
+   
+}

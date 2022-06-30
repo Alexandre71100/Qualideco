@@ -1,11 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Home
+{% endblock %}
+
+{% block stylesheets %}
+	{{parent()}}
+	<link rel="stylesheet" href="/css/style.css">
+{% endblock %}
 
 {% block body %}
-<div class="container">
-<img src="#" alt="logo">
-<a href="#">Produits</a>
-<a href="#">Contact</a>
-</div>
+	{{ include('component/navbar.html.twig') }}
+	{{ include('component/carousel.html.twig') }}
+	{{ include('component/AboutUs.html.twig') }}
+	{{ include('component/category.html.twig') }}
+	{{ include('component/map.html.twig') }}
+    {{ include('component/contact.html.twig') }}
+    <hr>
+    {{ include('component/footer.html.twig') }}
 {% endblock %}
