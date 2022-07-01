@@ -6,22 +6,23 @@
     <main class="container">
        <section class="row">
        <div class="col-12">
-           <h1>Paints</h1>
-           <p>Liste de tous les peintures</p>
-       </div>
-       {% for paint in paints %}
-       <div class="col-4">
-          <div class="card h-100">
-             <div class="card-body">
-             <h3 class="card-title">{{ paint.title }}</h3>
-             <a href="#" class="btn btn-primary">Voir la fiche produit</a>
-             </div>
-             <a href="#"></a>
-            </div>
-    {% endfor %}
-     </section>
-    </main>
- {% endblock %}
+      <h1>Paints</h1>
+      <p>Liste de tous les peintures</p>
+      </div>
+      {% for paint in paints %}
+      <div class="col-4">
+      <div class="card h-100">
+      <div class="card-body">
+      <h3 class="card-title">{{ paint.title }}</h3>
+      <a href="#" class="btn btn-warning">Voir la fiche produit</a> 
+   </div>
+   </div>
+   <a href="#"></a>
+   </div> 
+   {% endfor %}
+   </section>
+   </main>
+   {% endblock %}
 
 
        
