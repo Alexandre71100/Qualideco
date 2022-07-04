@@ -4,13 +4,17 @@
 
 {% block body %}
 
-    <div class="d-flex align-items-center justify-content-between pb-5">
+    <div class="align-items-center justify-content-between pb-5 py-3">
+        <h1 class="display-5 m-0 text-center">Edition catégorie</h1>
+    </div>
 
-            <h1 class="display-5 m-0">Edition catégorie</h1>
-        </div>
+    <div>
+        <a href="{{ path('app_category') }}" title="Retour à la liste" class="btn btn-outline-secondary">
+            Retour à la liste
+        </a>
+    </div>
 
     <div class="w-50 mx-auto">
         {{ form(form) }}
     </div>
-
 {% endblock %}

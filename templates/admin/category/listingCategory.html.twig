@@ -40,31 +40,32 @@
 
 
 <header>
-    <h1 class='text-center py-3'> Liste des catégories </h1>
+    <h1 class='text-center py-4'> Liste des catégories </h1>
 </header>
 
+<div class='container'>
     <table class="table">
         <thead>
-            <tr class="table-warning">
+            <tr class="table-warning text-center">
                 <th>ID</th>
                 <th>Nom</th>
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class='text-center'>
             {% for category in categories %}
                 <tr>
-                    <td class="py-12">
-                        <div class="d-flex align-items-center">
+                    <td class="py-3">
+                        <div>
                             {{ category.id }}
                         </div>
                     </td>
-                    <td class="py-12">
-                        <div class="d-flex align-items-center">
+                    <td class="py-3">
+                        <div>
                             {{ category.name }}
                         </div>
                     </td>
-                    <td> 
+                    <td class='py-3'> 
                         <a href="{{ path('app_edit_category', { id: category.id }) }}" title="Editer cette catégorie" class="btn btn-sm btn-outline-secondary">Editer</a>
                         
                         <form action="{{ path('category_delete', { id: category.id }) }}" method="post" class="d-inline">
@@ -76,7 +77,7 @@
             {% endfor %}
         </tbody>
     </table>
-
+</div>
 
     {{ knp_pagination_render(categories, null, {}, {
         'align': 'center',
