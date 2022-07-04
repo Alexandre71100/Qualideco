@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\SubCategory;
+use App\Entity\Category;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;

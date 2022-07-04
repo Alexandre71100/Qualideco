@@ -2,13 +2,8 @@
 
 {% block title %}Les catégories{% endblock %}
 
-    {% block javascripts %}
-    {# Récupère le contenu de block "javascripts" de la base.html.twig pour éviter que son contenu ne soit écrasé par celui-ci #}
-    {{ parent() }}
-    <script src="{{ asset('js/deleteCategory.js') }}" defer></script>
-{% endblock %}
-
 {% block body %}
+
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class='container'>
@@ -19,7 +14,6 @@
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
             <div class="navbar-nav">
                 <a href="{{ path('app_admin') }}" class="nav-item nav-link active">Administration</a>
-                <a href="{{ path('app_new_category') }}" class="nav-item nav-link active">Ajout d'une catégorie</a>
             </div>
             <form class="d-flex">
                 <div class="input-group">                    
@@ -31,44 +25,42 @@
     </div>
 </nav>
 
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success" role="alert">
-            {{ message }}
-
-        </div>
-    {% endfor %}
-
-
 <header>
-    <h1 class='text-center py-3'> Liste des catégories </h1>
+    <h1 class='text-center py-3'> Liste des réservations </h1>
 </header>
 
     <table class="table">
         <thead>
             <tr class="table-warning">
                 <th>ID</th>
-                <th>Nom</th>
+                <th>Création</th>
+                <th>peinture</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            {% for category in categories %}
+            {% for reservation in reservations %}
                 <tr>
                     <td class="py-12">
                         <div class="d-flex align-items-center">
-                            {{ category.id }}
+                            {{ reservation.id }}
                         </div>
                     </td>
                     <td class="py-12">
                         <div class="d-flex align-items-center">
-                            {{ category.name }}
+                            {{ reservation.createdAt }}
+                        </div>
+                    </td>
+                    <td class="py-12">
+                        <div class="d-flex align-items-center">
+                            {{ reservation.paints }}
                         </div>
                     </td>
                     <td> 
-                        <a href="{{ path('app_edit_category', { id: category.id }) }}" title="Editer cette catégorie" class="btn btn-sm btn-outline-secondary">Editer</a>
+                        <a href="" title="Editer cette catégorie" class="btn btn-sm btn-outline-secondary">Editer</a>
                         
-                        <form action="{{ path('category_delete', { id: category.id }) }}" method="post" class="d-inline">
-                            <input type="hidden" name="token" value="{{ csrf_token('delete-category-'~ category.id) }}">
+                        <form action="" method="post" class="d-inline">
+                            <input type="hidden" name="token" value="">
                             <button class="btn btn-sm btn-outline-danger">Supprimer</button>
                         </form>    
                     </td>

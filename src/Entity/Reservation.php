@@ -13,14 +13,14 @@ class Reservation
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\ManyToOne(targetEntity: paints::class)]
+    #[ORM\ManyToOne(targetEntity: Paints::class)]
     #[ORM\JoinColumn(nullable: false)]
     private $paints;
 
     #[ORM\Column(type: 'datetime_immutable')]
     private $created_at;
 
-    #[ORM\OneToOne(targetEntity: users::class, cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(targetEntity: Users::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private $users;
 
@@ -29,7 +29,7 @@ class Reservation
         return $this->id;
     }
 
-    public function getPaints(): ?paints
+    public function getPaints(): ?Paints
     {
         return $this->paints;
     }
@@ -53,12 +53,12 @@ class Reservation
         return $this;
     }
 
-    public function getUsers(): ?users
+    public function getUsers(): ?Users
     {
         return $this->users;
     }
 
-    public function setUsers(users $users): self
+    public function setUsers(Users $users): self
     {
         $this->users = $users;
 

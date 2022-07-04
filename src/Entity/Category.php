@@ -4,9 +4,11 @@ namespace App\Entity;
 
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Stringable;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
-class Category
+class Category implements Stringable
+
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -32,6 +34,11 @@ class Category
         $this->name = $name;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;       
     }
 
 }
