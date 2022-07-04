@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : jeu. 30 juin 2022 à 09:20
+-- Généré le : lun. 04 juil. 2022 à 12:34
 -- Version du serveur : 5.7.33
 -- Version de PHP : 8.1.7
 
@@ -20,6 +20,58 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `qualideco`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `name` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `category`
+--
+
+INSERT INTO `category` (`id`, `name`) VALUES
+(8, 'Primaire/Impression'),
+(9, 'Finitions'),
+(10, 'Decoration'),
+(11, 'Façade'),
+(12, 'Bois'),
+(13, 'Sols'),
+(14, 'Métaux');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `doctrine_migration_versions`
+--
+
+CREATE TABLE `doctrine_migration_versions` (
+  `version` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `executed_at` datetime DEFAULT NULL,
+  `execution_time` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `messenger_messages`
+--
+
+CREATE TABLE `messenger_messages` (
+  `id` bigint(20) NOT NULL,
+  `body` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `headers` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue_name` varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `available_at` datetime NOT NULL,
+  `delivered_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -145,9 +197,106 @@ INSERT INTO `paints` (`id`, `title`, `cover`, `destination`, `features`, `descri
 (303, 'Appret 3520 ', 'https://www.peintures-innova.fr/thumbs/peintures/metaux/systeme-caoutchouc-chlore/appret-352/appret-3520-xs-510x559.png\r\n    \r\n', '    Extérieur.\r\n    Métaux ferreux.\r\n    Bétons et dérivés.\r\n    Pour ambiance chimique agressive, maritime ou industrielle.\r\n    Revêtement de surfaces immergées : piscine, réservoirs d’eau non potable.\r\n', 'Aspect satin velouté.Bonne résistance aux acides et aux bases.Excellente résistance aux chlores.Bonne résistance aux produits chimiques.Ne résiste pas aux solvants.Riche en pigments anticorrosion.Système anticorrosion avec en finition notre LAQUE 1540', '\r\n\r\nDensité : 1.32\r\nRendement :  8- 10 m2/L\r\nBase :  GRIS - ROUGE BRUN\r\nConditionnement :  3L, 15L\r\n\r\n', 44),
 (304, 'Laque 1540 ', 'https://www.peintures-innova.fr/thumbs/peintures/metaux/systeme-caoutchouc-chlore/laque-1540/laque-1540-510x559.png', '\r\n    Métaux ferreux.\r\n    Bétons et dérivés.\r\n    Pour ambiance chimique agressive, maritime ou industrielle.\r\n    Revêtement de surfaces immergées : piscines, réservoirs d’eau non potable...\r\n', 'Aspect brillant.Bonne résistance aux acides et aux bases.Excellente résistance aux chlores.Bonne résistance aux produits chimiques.Ne résiste pas aux solvants.Système anticorrosion avec APPRET 3520.Insaponifiable : application possible sur fonds alcalins', '\r\n\r\nDensité : BLANC - INCOLORE - ROUGE BRUN\r\nRendement :1.37\r\nBase : 8 - 10 m2/L\r\nConditionnement : 0.75L, 3L, 15L\r\n\r\n', 65);
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reservation`
+--
+
+CREATE TABLE `reservation` (
+  `id` int(11) NOT NULL,
+  `paints_id` int(11) NOT NULL,
+  `users_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sub_category`
+--
+
+CREATE TABLE `sub_category` (
+  `id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `name` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `sub_category`
+--
+
+INSERT INTO `sub_category` (`id`, `category_id`, `name`) VALUES
+(14, 9, 'Finition Brillante'),
+(15, 9, 'Finition satinée'),
+(16, 9, 'Finition soie'),
+(17, 9, 'Finitions velours'),
+(18, 9, 'Finitions mate'),
+(19, 10, 'Enduits décoratifs'),
+(20, 10, 'Peinture dépolluante'),
+(21, 11, 'Impression fixateur'),
+(22, 11, 'Film mince D2'),
+(23, 11, 'Peinture minérale/organo-minérale'),
+(24, 11, 'Revêtement Semi Epais R.S.E D3'),
+(25, 11, 'Revêtement d\'imperméabilité 11-12-13-14'),
+(26, 11, 'Revêtement plastique épais R.P.E'),
+(27, 11, 'Lasure béton'),
+(28, 11, 'Toiture'),
+(29, 11, 'Hydrofuge/Antimousse'),
+(30, 12, 'Impression/Saturateur'),
+(31, 12, 'Peinture micropeuse de finition'),
+(32, 12, 'Lasure'),
+(33, 12, 'Vernis'),
+(34, 13, 'Domestique'),
+(35, 13, 'Industriel'),
+(36, 13, 'Parquet bois'),
+(37, 13, 'Sol sportif'),
+(38, 13, 'Piscine'),
+(39, 14, 'Primaire Anticorrosion'),
+(40, 14, 'Alkyde monocomposant'),
+(41, 14, 'Systéme époxy 2K'),
+(42, 14, 'Systéme PU 2K'),
+(43, 14, 'Systéme caoutchouc-chloré'),
+(44, 14, 'Diluants');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `lastname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `firstname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 --
 -- Index pour les tables déchargées
 --
+
+--
+-- Index pour la table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `doctrine_migration_versions`
+--
+ALTER TABLE `doctrine_migration_versions`
+  ADD PRIMARY KEY (`version`);
+
+--
+-- Index pour la table `messenger_messages`
+--
+ALTER TABLE `messenger_messages`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_75EA56E0FB7336F0` (`queue_name`),
+  ADD KEY `IDX_75EA56E0E3BD61CE` (`available_at`),
+  ADD KEY `IDX_75EA56E016BA31DB` (`delivered_at`);
 
 --
 -- Index pour la table `paints`
@@ -156,14 +305,82 @@ ALTER TABLE `paints`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UNIQ_42C8495567B3B43D` (`users_id`),
+  ADD KEY `IDX_42C84955CAE3451D` (`paints_id`);
+
+--
+-- Index pour la table `sub_category`
+--
+ALTER TABLE `sub_category`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_BCE3F79812469DE2` (`category_id`);
+
+--
+-- Index pour la table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
+
+--
+-- AUTO_INCREMENT pour la table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT pour la table `messenger_messages`
+--
+ALTER TABLE `messenger_messages`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `paints`
 --
 ALTER TABLE `paints`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=305;
+
+--
+-- AUTO_INCREMENT pour la table `reservation`
+--
+ALTER TABLE `reservation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `sub_category`
+--
+ALTER TABLE `sub_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD CONSTRAINT `FK_42C8495567B3B43D` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `FK_42C84955CAE3451D` FOREIGN KEY (`paints_id`) REFERENCES `paints` (`id`);
+
+--
+-- Contraintes pour la table `sub_category`
+--
+ALTER TABLE `sub_category`
+  ADD CONSTRAINT `FK_BCE3F79812469DE2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

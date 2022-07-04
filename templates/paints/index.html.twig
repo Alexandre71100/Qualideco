@@ -6,8 +6,8 @@
     <main class="container">
        <section class="row">
        <div class="col-12">
-      <h1>Paints</h1>
-      <p>Liste de tous les peintures</p>
+      <h1 class="text-center">Paints</h1>
+      <p class="text-center">Liste de tous les peintures</p>
       </div>
       {% for paint in paints %}
       <div class="col-4">
@@ -22,8 +22,15 @@
    {% endfor %}
    </section>
    </main>
-   {{ knp_pagination_render(paints) }} 
+   {{ knp_pagination_render(paints) }}
+   <footer>
+   <div class="text-center p-4">
+   @ 2022 copyright
+   </footer>
+   </div>
    {% endblock %}
+   
+
 
 
        
