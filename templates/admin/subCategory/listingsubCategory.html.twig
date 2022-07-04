@@ -59,8 +59,8 @@
                     <td> 
                         <a href="{{ path('app_edit_subcategory', { id: subCategory.id }) }}" title="Editer cette catégorie" class="btn btn-sm btn-outline-secondary">Editer</a>
                         
-                        <form action="" method="post" class="d-inline">
-                            <input type="hidden" name="token" value="">
+                        <form action="{{ path('subCategory_delete', { id: subCategory.id }) }}" method="post" class="d-inline">
+                            <input type="hidden" name="token" value="{{ csrf_token('delete-subCategory-'~ subCategory.id) }}">
                             <button class="btn btn-sm btn-outline-danger">Supprimer</button>
                         </form>    
                     </td>
@@ -68,5 +68,11 @@
             {% endfor %}
         </tbody>
     </table>
+
+    {{ knp_pagination_render(subCategories, null, {}, {
+        'align': 'center',
+        'size': 'large',
+        'rounded': true,
+    }) }}
 
 {% endblock %}

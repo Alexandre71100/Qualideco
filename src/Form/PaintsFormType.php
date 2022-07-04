@@ -45,7 +45,7 @@ class PaintsFormType extends AbstractType
                 'label' => 'Image de couverture',
                 'download_label' => false,
                 'delete_label' => 'Cocher pour supprimer cette image',
-                'imagine_pattern' => 'thumb'
+                'imagine_pattern' => 'thumb',
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Enregistrer'

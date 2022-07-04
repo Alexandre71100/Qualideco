@@ -82,10 +82,15 @@
                         </div>
                     </td>
                     <td> 
-                        <a href="{{ path('app_edit_paint', { id: paint.id }) }}" title="Editer cette catégorie" class="btn btn-sm btn-outline-secondary">Editer</a>
+
+                        <a href="{{ path('details_paints', { id: paint.id }) }}" class="btn btn-outline-warning btn-sm">
+                            Voir plus de détails...
+                        </a>
+
+                        <a href="{{ path('app_edit_paint', { id: paint.id }) }}" title="Editer cette peinture" class="btn btn-sm btn-outline-secondary">Editer</a>
                         
-                        <form action="" method="post" class="d-inline">
-                            <input type="hidden" name="token" value="">
+                        <form action="{{ path('paint_delete', { id: paint.id }) }}" method="post" class="d-inline">
+                            <input type="hidden" name="token" value="{{ csrf_token('delete-paint-'~ paint.id) }}">
                             <button class="btn btn-sm btn-outline-danger">Supprimer</button>
                         </form>    
                     </td>
@@ -93,5 +98,11 @@
             {% endfor %}
         </tbody>
     </table>
+
+    {{ knp_pagination_render(paints, null, {}, {
+        'align': 'center',
+        'size': 'large',
+        'rounded': true,
+    }) }}
 
 {% endblock %}
