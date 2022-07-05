@@ -10,7 +10,7 @@
       <p class="text-center">Liste de tous les peintures</p>
       </div>
       {% for paint in paints %}
-      <div class="col-4">
+      <div class="col-4 py-5">
       <div class="card h-100">
       <div class="card-body">
       <h3 class="card-title">{{ paint.title }}</h3>
@@ -22,7 +22,11 @@
    {% endfor %}
    </section>
    </main>
-   {{ knp_pagination_render(paints) }}
+   {{ knp_pagination_render(paints, null, {}, {
+        'align': 'center',
+        'size': 'large',
+        'rounded': true,
+    }) }}
    <footer>
    <div class="text-center p-4">
    @ 2022 copyright
