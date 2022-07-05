@@ -5,9 +5,29 @@ liip_imagine:
 
     filter_sets:
         cache: ~
-        
-        thumb:
+
+        # Nom du filtre
+        thumbnail:
+
+            # Ajuster la qualité de l'image
+            quality: 85
+
+            # Listes des différentes transformations
+            filters:
+
+                # Création d'une vignette
+                thumbnail: { size: [250, 150], mode: outbound }
+
+        # Autres filtres...
+        vignette:
+            quality: 75
+            filters:
+                thumbnail: { size: [150, 100], mode: outbound }
+                
+         thumb:
             quality: 75
             filters:
                 thumbnail: { size: [250, 150], mode: 'outbound' }
                 background: { size: [275, 175], position: center, color: '#000000' }
+
+

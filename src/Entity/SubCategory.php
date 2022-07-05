@@ -14,8 +14,10 @@ class SubCategory
     #[ORM\Column(type: 'integer')]
     private $id;
 
+
     #[Assert\NotBlank(message:"Le nom de la sous catégorie est obligatoire")]
     #[ORM\Column(type: 'string', length: 50)]
+
     private $name;
 
     #[ORM\ManyToOne(targetEntity: Category::class)]

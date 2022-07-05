@@ -22,23 +22,27 @@ class Paints
     private $id;
 
     #[ORM\OneToMany(mappedBy: 'no', targetEntity: Category::class)]
+
     private $category;
 
     #[ORM\OneToMany(mappedBy: 'no', targetEntity: SubCategory::class)]
     private $subCategory;
 
     #[Assert\NotBlank(message:"Le titre de la peinture est obligatoire")]
+
     #[ORM\Column(type: 'string', length: 80)]
     private $title;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $cover;
 
+
     #[Assert\NotBlank(message:"La destination de la peinture est obligatoire")]
     #[ORM\Column(type: 'string', length: 255)]
     private $destination;
 
     #[Assert\NotBlank(message:"Les caractéristique de la peinture sont obligatoire")]
+
     #[ORM\Column(type: 'string', length: 255)]
     private $features;
 
@@ -75,10 +79,12 @@ class Paints
      */
     public function getCategory(): Collection
     {
-        return $this->category;
+        return $this->Category;
     }
 
+
     public function addCategory(Category $category): self
+
     {
         if (!$this->category->contains($category)) {
             $this->category[] = $category;

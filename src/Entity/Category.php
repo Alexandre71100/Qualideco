@@ -17,8 +17,10 @@ class Category implements Stringable
     #[ORM\Column(type: 'integer')]
     private $id;
 
+
     #[Assert\NotBlank(message:"Le nom de la catégorie est obligatoire")]
     #[ORM\Column(type: 'string', length: 50)]
+
     private $name;
 
 
