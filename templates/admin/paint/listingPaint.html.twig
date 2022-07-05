@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les catégories{% endblock %}
+
+{% block body %}
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class='container'>
+        <a href="#" class="navbar-brand">Qualideco</a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="{{ path('app_admin') }}" class="nav-item nav-link active">Administration</a>
+                <a href="{{ path('app_new_paint') }}" class="nav-item nav-link active">Ajout d'une peinture</a>
+            </div>
+            <form class="d-flex">
+                <div class="input-group">                    
+                    <input type="text" class="form-control" placeholder="Search">
+                    <button type="button" class="btn btn-secondary"><i class="bi-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<header>
+    <h1 class='text-center py-3'> Liste des peintures </h1>
+</header>
+
+    <table class="table">
+        <thead>
+            <tr class="table-warning">
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Image</th>
+                <th>Destination</th>
+                <th>Caractéristique</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paint in paints %}
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            {{ paint.id }}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            {{ paint.title }}
+                        </div>
+                    </td>
+                    <td>
+                        {% if vich_uploader_asset(paint, 'coverFile') is not null %}
+                            <img src="{{ vich_uploader_asset(paint, 'coverFile') }}" width='70px'>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            {{ paint.destination }}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            {{ paint.features }}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            {{ paint.description }}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            {{ paint.price }}
+                        </div>
+                    </td>
+                    <td> 
+
+                        <a href="{{ path('details_paints', { id: paint.id }) }}" class="btn btn-outline-warning btn-sm">
+                            Voir plus de détails...
+                        </a>
+
+                        <a href="{{ path('app_edit_paint', { id: paint.id }) }}" title="Editer cette peinture" class="btn btn-sm btn-outline-secondary">Editer</a>
+                        
+                        <form action="{{ path('paint_delete', { id: paint.id }) }}" method="post" class="d-inline">
+                            <input type="hidden" name="token" value="{{ csrf_token('delete-paint-'~ paint.id) }}">
+                            <button class="btn btn-sm btn-outline-danger">Supprimer</button>
+                        </form>    
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {{ knp_pagination_render(paints, null, {}, {
+        'align': 'center',
+        'size': 'large',
+        'rounded': true,
+    }) }}
+
+{% endblock %}

@@ -6,8 +6,14 @@ use App\Repository\PaintsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use DateTimeImmutable;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PaintsRepository::class)]
+#[Vich\Uploadable] 
+
 class Paints
 {
     #[ORM\Id]
@@ -16,10 +22,13 @@ class Paints
     private $id;
 
     #[ORM\OneToMany(mappedBy: 'no', targetEntity: Category::class)]
-    private $Category;
+
+    private $category;
 
     #[ORM\OneToMany(mappedBy: 'no', targetEntity: SubCategory::class)]
-    private $SubCategory;
+    private $subCategory;
+
+    #[Assert\NotBlank(message:"Le titre de la peinture est obligatoire")]
 
     #[ORM\Column(type: 'string', length: 80)]
     private $title;
@@ -27,17 +36,32 @@ class Paints
     #[ORM\Column(type: 'string', length: 255)]
     private $cover;
 
+
+    #[Assert\NotBlank(message:"La destination de la peinture est obligatoire")]
     #[ORM\Column(type: 'string', length: 255)]
     private $destination;
+
+    #[Assert\NotBlank(message:"Les caractéristique de la peinture sont obligatoire")]
 
     #[ORM\Column(type: 'string', length: 255)]
     private $features;
 
+    #[Assert\NotBlank(message:"La description de la peinture est obligatoire")]
     #[ORM\Column(type: 'text')]
     private $description;
 
+    #[Assert\NotBlank()]
     #[ORM\Column(type: 'integer')]
     private $price;
+
+    #[Assert\NotBlank(message:"L'image est obligatoire'")]
+    #[Vich\UploadableField(mapping: 'products', fileNameProperty: 'cover')]
+    #[Assert\Image(mimeTypesMessage: 'Ce fichier n\'est pas une image')]
+    #[Assert\File(maxSize: '1M', maxSizeMessage: 'Le fichier ne doit pas dépasser les {{ limit }} {{ suffix }}')]
+    private $coverFile;
+
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    private $updated_at;
 
     public function __construct()
     {
@@ -58,7 +82,9 @@ class Paints
         return $this->Category;
     }
 
-    public function addCategory(Category $Category): self
+
+    public function addCategory(Category $category): self
+
     {
         if (!$this->category->contains($category)) {
             $this->category[] = $category;
@@ -68,7 +94,7 @@ class Paints
         return $this;
     }
 
-    public function removeCategory(category $category): self
+    public function removeCategory(Category $category): self
     {
         if ($this->category->removeElement($category)) {
             // set the owning side to null (unless already changed)
@@ -88,7 +114,7 @@ class Paints
         return $this->subCategory;
     }
 
-    public function addSubCategory(subCategory $subCategory): self
+    public function addSubCategory(SubCategory $subCategory): self
     {
         if (!$this->subCategory->contains($subCategory)) {
             $this->subCategory[] = $subCategory;
@@ -178,6 +204,35 @@ class Paints
     public function setPrice(int $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+
+    public function getCoverFile(): ?File
+    {
+        return $this->coverFile;
+    }
+
+    public function setCoverFile(?File $coverFile = null): self
+    {
+        $this->coverFile = $coverFile;
+
+        if ($coverFile !== null) {
+            $this->updated_at = new DateTimeImmutable();
+        }
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(?\DateTimeImmutable $updated_at): self
+    {
+        $this->updated_at = $updated_at;
 
         return $this;
     }
