@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SubCategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SubCategoryRepository::class)]
 class SubCategory
@@ -13,6 +14,7 @@ class SubCategory
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    #[Assert\NotBlank(message:"Le nom de la sous catégorie est obligatoire")]
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
 

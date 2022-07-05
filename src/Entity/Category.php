@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Stringable;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category implements Stringable
@@ -15,6 +17,7 @@ class Category implements Stringable
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    #[Assert\NotBlank(message:"Le nom de la catégorie est obligatoire")]
     #[ORM\Column(type: 'string', length: 50)]
     private $name;
 

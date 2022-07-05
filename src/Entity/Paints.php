@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PaintsRepository::class)]
 #[Vich\Uploadable] 
+
 class Paints
 {
     #[ORM\Id]
@@ -26,24 +27,30 @@ class Paints
     #[ORM\OneToMany(mappedBy: 'no', targetEntity: SubCategory::class)]
     private $subCategory;
 
+    #[Assert\NotBlank(message:"Le titre de la peinture est obligatoire")]
     #[ORM\Column(type: 'string', length: 80)]
     private $title;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $cover;
 
+    #[Assert\NotBlank(message:"La destination de la peinture est obligatoire")]
     #[ORM\Column(type: 'string', length: 255)]
     private $destination;
 
+    #[Assert\NotBlank(message:"Les caractéristique de la peinture sont obligatoire")]
     #[ORM\Column(type: 'string', length: 255)]
     private $features;
 
+    #[Assert\NotBlank(message:"La description de la peinture est obligatoire")]
     #[ORM\Column(type: 'text')]
     private $description;
 
+    #[Assert\NotBlank()]
     #[ORM\Column(type: 'integer')]
     private $price;
 
+    #[Assert\NotBlank(message:"L'image est obligatoire'")]
     #[Vich\UploadableField(mapping: 'products', fileNameProperty: 'cover')]
     #[Assert\Image(mimeTypesMessage: 'Ce fichier n\'est pas une image')]
     #[Assert\File(maxSize: '1M', maxSizeMessage: 'Le fichier ne doit pas dépasser les {{ limit }} {{ suffix }}')]

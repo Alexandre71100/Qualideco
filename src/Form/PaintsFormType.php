@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
+
 class PaintsFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -42,7 +43,7 @@ class PaintsFormType extends AbstractType
             ])
             ->add('coverFile', VichImageType::class, [
                 'required' => false,
-                'label' => 'Image de couverture',
+                'label' => 'Image de la peinture',
                 'download_label' => false,
                 'delete_label' => 'Cocher pour supprimer cette image',
                 'imagine_pattern' => 'thumb',
