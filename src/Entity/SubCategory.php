@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SubCategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SubCategoryRepository::class)]
 class SubCategory
@@ -13,10 +14,13 @@ class SubCategory
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 80)]
+
+    #[Assert\NotBlank(message:"Le nom de la sous catégorie est obligatoire")]
+    #[ORM\Column(type: 'string', length: 50)]
+
     private $name;
 
-    #[ORM\ManyToOne(targetEntity: category::class)]
+    #[ORM\ManyToOne(targetEntity: Category::class)]
     #[ORM\JoinColumn(nullable: false)]
     private $category;
 
@@ -39,12 +43,12 @@ class SubCategory
         return $this;
     }
 
-    public function getCategory(): ?category
+    public function getCategory(): ?Category
     {
         return $this->category;
     }
 
-    public function setCategory(?category $category): self
+    public function setCategory(?Category $category): self
     {
         $this->category = $category;
 
