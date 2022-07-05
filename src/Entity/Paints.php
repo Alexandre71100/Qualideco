@@ -15,22 +15,22 @@ class Paints
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\OneToMany(mappedBy: 'no', targetEntity: category::class)]
-    private $category;
+    #[ORM\OneToMany(mappedBy: 'no', targetEntity: Category::class)]
+    private $Category;
 
-    #[ORM\OneToMany(mappedBy: 'no', targetEntity: subCategory::class)]
-    private $subCategory;
+    #[ORM\OneToMany(mappedBy: 'no', targetEntity: SubCategory::class)]
+    private $SubCategory;
 
-    #[ORM\Column(type: 'string', length: 50)]
+    #[ORM\Column(type: 'string', length: 80)]
     private $title;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $cover;
 
-    #[ORM\Column(type: 'string', length: 150)]
+    #[ORM\Column(type: 'string', length: 255)]
     private $destination;
 
-    #[ORM\Column(type: 'string', length: 150)]
+    #[ORM\Column(type: 'string', length: 255)]
     private $features;
 
     #[ORM\Column(type: 'text')]
@@ -55,10 +55,10 @@ class Paints
      */
     public function getCategory(): Collection
     {
-        return $this->category;
+        return $this->Category;
     }
 
-    public function addCategory(category $category): self
+    public function addCategory(Category $Category): self
     {
         if (!$this->category->contains($category)) {
             $this->category[] = $category;
