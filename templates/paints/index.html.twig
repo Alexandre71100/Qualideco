@@ -2,6 +2,11 @@
 
 {% block title %} Paints{% endblock %}
 
+{# {% block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="css/style.css">
+{% endblock %} #}
+
 {% block body %}
     <main class="container">
        <section class="row">
@@ -14,6 +19,7 @@
       <div class="card h-100">
       <div class="card-body">
       <h3 class="card-title">{{ paint.title }}</h3>
+      <img src="{{paint.cover}}" width="250px">
       <a href="#" class="btn btn-warning">Voir la fiche produit</a> 
    </div>
    </div>
