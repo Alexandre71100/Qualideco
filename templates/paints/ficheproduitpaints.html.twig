@@ -1,0 +1,18 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Peintures !{% endblock %}
+
+{% block body %}
+
+    <div class="d-flex align-items-center justify-content-between">
+        <h1 class="display-4">{{ paints.title }}</h1>
+        <p class="display-6">{{ paints.price }}€</p>
+    </div>
+
+    {% if vich_uploader_asset(paints, 'coverFile') is not null %}
+        <p>
+            <img src="{{ vich_uploader_asset(paints, 'coverFile')|imagine_filter('thumb') }}" alt="{{ paints.title }}">
+        </p>
+    {% endif %}
+
+{% endblock %}

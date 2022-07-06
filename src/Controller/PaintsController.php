@@ -29,7 +29,7 @@ class PaintsController extends AbstractController
     }
 
     #[Route('/paints/{id}', name: 'ficheproduit_paints', requirements:['id' => '\d+'])]
-    public function details(Magazine $magazine): Response
+    public function details(paints $paints): Response
     {
 		/**
 		 * Grâce à l'injection de dépendance et à l'ID passée en paramètre de la requête, Doctrine effectue la
