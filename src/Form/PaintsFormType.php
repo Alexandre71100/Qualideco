@@ -38,6 +38,7 @@ class PaintsFormType extends AbstractType
                 'required' => false
             ])
             ->add('price', MoneyType::class, [
+                'label' => 'prix',
                 'required' => false,
                 'currency' => 'EUR'
             ])

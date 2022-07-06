@@ -50,7 +50,7 @@ class Paints
     #[ORM\Column(type: 'text')]
     private $description;
 
-    #[Assert\NotBlank()]
+    #[Assert\NotBlank(message:"Le prix de la peinture est obligatoire")]
     #[ORM\Column(type: 'integer')]
     private $price;
 
