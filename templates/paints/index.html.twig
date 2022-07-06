@@ -2,10 +2,10 @@
 
 {% block title %} Paints{% endblock %}
 
-{# {% block stylesheets %}
+{% block stylesheets %}
     {{parent()}}
-    <link rel="stylesheet" href="css/style.css">
-{% endblock %} #}
+    <link rel="stylesheet" href="css/painst.css">
+{% endblock %} 
 
 {% block body %}
     <main class="container">
@@ -17,10 +17,10 @@
       {% for paint in paints %}
       <div class="col-4 py-5">
       <div class="card h-100">
-      <div class="card-body">
-      <h3 class="card-title">{{ paint.title }}</h3>
-      <img src="{{paint.cover}}" width="250px">
-      <a href="#" class="btn btn-warning">Voir la fiche produit</a> 
+      <div class="card-body text-center">
+      <h3 class="text-center card-title">{{ paint.title }}</h3>
+      <img src="{{paint.cover}}" width="150px">
+      <a href="#" class="btn btn-warning">Voir la fiche produit</a>
    </div>
    </div>
    <a href="#"></a>
