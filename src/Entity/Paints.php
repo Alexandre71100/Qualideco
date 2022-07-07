@@ -4,12 +4,12 @@ namespace App\Entity;
 
 use App\Repository\PaintsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\Category;
 
 #[ORM\Entity(repositoryClass: PaintsRepository::class)]
 #[Vich\Uploadable] 
@@ -55,6 +55,14 @@ class Paints
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private $updated_at;
+
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'paints')]
+    #[ORM\JoinColumn(nullable: true)]
+    private $category;
+
+    #[ORM\ManyToOne(targetEntity: SubCategory::class, inversedBy: 'paints')]
+    #[ORM\JoinColumn(nullable: true)]
+    private $subCategory;
 
     public function __construct()
     {
@@ -164,6 +172,30 @@ class Paints
     public function setUpdatedAt(?\DateTimeImmutable $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getSubCategory(): ?SubCategory
+    {
+        return $this->subCategory;
+    }
+
+    public function setSubCategory(?SubCategory $subCategory): self
+    {
+        $this->subCategory = $subCategory;
 
         return $this;
     }
