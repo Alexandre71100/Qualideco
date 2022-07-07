@@ -21,13 +21,6 @@ class Paints
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\OneToMany(mappedBy: 'no', targetEntity: Category::class)]
-
-    private $category;
-
-    #[ORM\OneToMany(mappedBy: 'no', targetEntity: SubCategory::class)]
-    private $subCategory;
-
     #[Assert\NotBlank(message:"Le titre de la peinture est obligatoire")]
 
     #[ORM\Column(type: 'string', length: 80)]
@@ -72,68 +65,6 @@ class Paints
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    /**
-     * @return Collection<int, category>
-     */
-    public function getCategory(): Collection
-    {
-        return $this->Category;
-    }
-
-
-    public function addCategory(Category $category): self
-
-    {
-        if (!$this->category->contains($category)) {
-            $this->category[] = $category;
-            $category->setNo($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(Category $category): self
-    {
-        if ($this->category->removeElement($category)) {
-            // set the owning side to null (unless already changed)
-            if ($category->getNo() === $this) {
-                $category->setNo(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, subCategory>
-     */
-    public function getSubCategory(): Collection
-    {
-        return $this->subCategory;
-    }
-
-    public function addSubCategory(SubCategory $subCategory): self
-    {
-        if (!$this->subCategory->contains($subCategory)) {
-            $this->subCategory[] = $subCategory;
-            $subCategory->setNo($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSubCategory(subCategory $subCategory): self
-    {
-        if ($this->subCategory->removeElement($subCategory)) {
-            // set the owning side to null (unless already changed)
-            if ($subCategory->getNo() === $this) {
-                $subCategory->setNo(null);
-            }
-        }
-
-        return $this;
     }
 
     public function getTitle(): ?string
