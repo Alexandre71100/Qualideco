@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base1.html.twig' %}
 
 {% block title %}Peintures !{% endblock %}
 
@@ -10,9 +10,8 @@
     </div>
 
     {% if vich_uploader_asset(paints, 'coverFile') is not null %}
-        <p>
-            <img src="{{ vich_uploader_asset(paints, 'coverFile')|imagine_filter('thumb') }}" alt="{{ paints.title }}">
-        </p>
+        <img src="{{ paints.cover }}" alt="peinture" width="250px">                  
     {% endif %}
+
 
 {% endblock %}

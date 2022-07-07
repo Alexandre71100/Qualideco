@@ -20,7 +20,7 @@ class Reservation
     #[ORM\Column(type: 'datetime_immutable')]
     private $created_at;
 
-    #[ORM\OneToOne(targetEntity: Users::class, cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(targetEntity: User::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private $users;
 
@@ -53,12 +53,12 @@ class Reservation
         return $this;
     }
 
-    public function getUsers(): ?Users
+    public function getUsers(): ?User
     {
         return $this->users;
     }
 
-    public function setUsers(Users $users): self
+    public function setUsers(User $users): self
     {
         $this->users = $users;
 
