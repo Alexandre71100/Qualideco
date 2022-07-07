@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Stringable;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -22,6 +24,14 @@ class Category implements Stringable
     #[ORM\Column(type: 'string', length: 50)]
 
     private $name;
+
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Paints::class)]
+    private $paints;
+
+    public function __construct()
+    {
+        $this->paints = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -44,6 +54,36 @@ class Category implements Stringable
     public function __toString(): string
     {
         return $this->name;       
+    }
+
+    /**
+     * @return Collection<int, Paints>
+     */
+    public function getPaints(): Collection
+    {
+        return $this->paints;
+    }
+
+    public function addPaint(Paints $paint): self
+    {
+        if (!$this->paints->contains($paint)) {
+            $this->paints[] = $paint;
+            $paint->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removePaint(Paints $paint): self
+    {
+        if ($this->paints->removeElement($paint)) {
+            // set the owning side to null (unless already changed)
+            if ($paint->getCategory() === $this) {
+                $paint->setCategory(null);
+            }
+        }
+
+        return $this;
     }
 
 }
