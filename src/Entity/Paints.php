@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\PaintsRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
 use Symfony\Component\HttpFoundation\File\File;
@@ -63,12 +62,6 @@ class Paints
     #[ORM\ManyToOne(targetEntity: SubCategory::class, inversedBy: 'paints')]
     #[ORM\JoinColumn(nullable: true)]
     private $subCategory;
-
-    public function __construct()
-    {
-        $this->category = new ArrayCollection();
-        $this->subCategory = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
