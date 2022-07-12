@@ -6,7 +6,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class='container'>
-        <a href="#" class="navbar-brand">Qualideco</a>
+        <a href="{{ path('app_home') }}" class="navbar-brand">Qualideco</a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,30 +29,39 @@
     <h1 class='text-center py-3'> Liste des sous catégories </h1>
 </header>
 
+
+<div class='container'>
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success text-center" role="alert">
+        {{ message }}
+
+    </div>
+{% endfor %}
+
     <table class="table">
         <thead>
-            <tr class="table-warning">
+            <tr class="table-warning text-center">
                 <th>ID</th>
                 <th>Nom catégorie</th>
                 <th>Nom sous catégorie</th>
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class='text-center'>
             {% for subCategory in subCategories %}
                 <tr>
-                    <td class="py-12">
-                        <div class="d-flex align-items-center">
+                    <td class="py-3">
+                        <div>
                             {{ subCategory.id }}
                         </div>
                     </td>
-                    <td class="py-12">
-                        <div class="d-flex align-items-center">
+                    <td class="py-3">
+                        <div>
                             {{ subCategory.name }}
                         </div>
                     </td>
-                    <td class="py-12">
-                        <div class="d-flex align-items-center">
+                    <td class="py-3">
+                        <div>
                             {{ subCategory.category }}
                         </div>
                     </td>
@@ -68,7 +77,7 @@
             {% endfor %}
         </tbody>
     </table>
-
+</div>
     {{ knp_pagination_render(subCategories, null, {}, {
         'align': 'center',
         'size': 'large',
