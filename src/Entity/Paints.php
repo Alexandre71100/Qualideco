@@ -26,6 +26,7 @@ class Paints
     private $title;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\JoinColumn(nullable: true)]
     private $cover;
 
 
@@ -46,7 +47,9 @@ class Paints
     #[ORM\Column(type: 'integer')]
     private $price;
 
-    #[Assert\NotBlank(message:"L'image est obligatoire'")]
+    
+    // #[Assert\NotBlank(message:"L'image est obligatoire'")]
+    #[ORM\JoinColumn(nullable: true)]
     #[Vich\UploadableField(mapping: 'products', fileNameProperty: 'cover')]
     #[Assert\Image(mimeTypesMessage: 'Ce fichier n\'est pas une image')]
     #[Assert\File(maxSize: '1M', maxSizeMessage: 'Le fichier ne doit pas dépasser les {{ limit }} {{ suffix }}')]
@@ -55,6 +58,7 @@ class Paints
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private $updated_at;
 
+    #[Assert\NotBlank(message:"La catégorie de la peinture est obligatoire")]
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'paints')]
     #[ORM\JoinColumn(nullable: true)]
     private $category;
@@ -85,7 +89,7 @@ class Paints
         return $this->cover;
     }
 
-    public function setCover(string $cover): self
+    public function setCover(?string $cover): self
     {
         $this->cover = $cover;
 

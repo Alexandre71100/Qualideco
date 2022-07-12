@@ -1,5 +1,10 @@
 {% extends 'base1.html.twig' %}
 
+{% block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="/css/admin.css">
+{% endblock %}
+
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block body %}
@@ -33,6 +38,16 @@
 <main>
 
   <h1 class='text-center py-4'> Administration Qualideco </h1>
+
+  {# <img src="images/qualideco.deventure.jpg" width="50%" class="" > #}
+
+<div class="row">
+    <div class="mx-auto text-center">
+        <img src="images/qualideco.deventure.jpg" width="50%">
+    </div>
+</div>
+
+
 
 </main>
 

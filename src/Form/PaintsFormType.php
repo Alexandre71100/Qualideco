@@ -28,12 +28,16 @@ class PaintsFormType extends AbstractType
             ->add('category', EntityType::class, [
                 'label' => 'Choisir une catégorie',
                 'class' => Category::class,
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'placeholder' => '--Choisir une catégorie--',
+                'required' => false
             ] )
             ->add('SubCategory', EntityType::class, [
                 'label' => 'Choisir une sous catégorie',
                 'class' => SubCategory::class,
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'placeholder' => '--Choisir une sous catégorie--',
+                'required' => false
             ] )
             ->add('destination', TextareaType::class, [
                 'label' => 'Destination',
@@ -51,7 +55,7 @@ class PaintsFormType extends AbstractType
                 'required' => false
             ])
             ->add('price', MoneyType::class, [
-                'label' => 'prix',
+                'label' => 'Prix',
                 'required' => false,
                 'currency' => 'EUR'
             ])

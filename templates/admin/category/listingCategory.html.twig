@@ -31,19 +31,18 @@
     </div>
 </nav>
 
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success" role="alert">
-            {{ message }}
-
-        </div>
-    {% endfor %}
-
-
 <header>
     <h1 class='text-center py-4'> Liste des catégories </h1>
 </header>
 
 <div class='container'>
+
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success text-center" role="alert">
+        {{ message }}
+    </div>
+{% endfor %}
+
     <table class="table">
         <thead>
             <tr class="table-warning text-center">
