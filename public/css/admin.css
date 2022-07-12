@@ -1,0 +1,26 @@
+.btn-enregistre{
+    text-align: center;
+}
+
+h1 {
+    font-weight: bold !important;
+}
+
+.formframe{
+    text-align: center;
+    border: 25px blue groove;
+    padding: 15px;
+    margin-top: 10%;
+}
+
+
+.formframe button {
+    display: block;
+    margin : auto;
+}
+
+body {
+    background-image: url(../images/imagesdefond.png);
+    background-size: cover;
+    background-repeat : no-repeat;
+}

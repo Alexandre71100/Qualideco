@@ -1,0 +1,93 @@
+body {
+    font-size: 16px;
+    margin: 0;
+    height: 100vh;   
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+main section {
+    width: 50%;
+}
+
+/**
+* Image
+*/
+
+.image {
+    background: url(../images/qualideco.png) center no-repeat;
+    background-size: cover;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+/**
+* Formulaire
+*/
+
+
+.connexion form {
+    width: 50%;
+    margin: auto;
+}
+
+.connexion form h1{
+    font-size: 2.3rem;
+}
+
+.connexion form label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 2px;
+}
+
+.connexion form input {
+    display: block;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    margin-bottom: 16px; 
+}
+
+.connexion form button{
+    background-color: blue;
+    color: white;
+    border-radius: 4px;
+    padding: 12px 0;
+    border: 0;
+    width: 100%;
+
+}
+
+.connexion form a {
+    border: 1px solid lightgrey;
+    display: flex;
+    color: black;
+    font-size: 0.9rem;
+    gap: 10px;
+    padding: 10px 0;
+    border-radius: 4px;
+    margin-top: 12px;
+}
+
+@media (max-width: 1200px) {
+    .image {
+        display: none;
+    }
+
+    .connexion form {
+        width: 100%;
+    }
+
+    
+
+    
+}
+

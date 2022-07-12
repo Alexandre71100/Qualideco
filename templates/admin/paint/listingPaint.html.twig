@@ -30,15 +30,21 @@
     <h1 class='text-center py-3'> Liste des peintures </h1>
 </header>
 
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success text-center" role="alert">
+        {{ message }}
+
+    </div>
+{% endfor %}
+
     <table class="table">
         <thead>
             <tr class="table-warning">
-                <th>ID</th>
                 <th>Titre</th>
                 <th>Image</th>
                 <th>Destination</th>
                 <th>Caractéristique</th>
-                <th>Description</th>
+                {# <th>Description</th> #}
                 <th>Prix</th>
                 <th>Actions</th>
             </tr>
@@ -46,11 +52,6 @@
         <tbody>
             {% for paint in paints %}
                 <tr>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            {{ paint.id }}
-                        </div>
-                    </td>
                     <td>
                         <div class="d-flex align-items-center">
                             {{ paint.title }}
@@ -78,14 +79,14 @@
                             {{ paint.features }}
                         </div>
                     </td>
-                    <td>
+                    {# <td>
                         <div class="d-flex align-items-center">
                             {{ paint.description }}
                         </div>
-                    </td>
+                    </td> #}
                     <td>
                         <div class="d-flex align-items-center">
-                            {{ paint.price }}
+                           <p> {{ paint.price }}€</p>
                         </div>
                     </td>
                     <td> 

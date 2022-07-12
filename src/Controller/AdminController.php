@@ -18,8 +18,9 @@ use App\Repository\SubCategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-
+#[IsGranted('ROLE_ADMIN')]
 class AdminController extends AbstractController
 {
     #[Route('/admin', name: 'app_admin')]
@@ -217,7 +218,7 @@ class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $paintsRepository->add($paints, true);
-            $this->addFlash('success', 'La catégorie à bien été enregistrée');
+            $this->addFlash('success', 'La peinture à bien été enregistrée');
 
             return $this->redirectToRoute('app_paint');
         }
@@ -236,7 +237,7 @@ class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $paintsRepository->add($paints, true);
-            $this->addFlash('success', 'La catégorie à bien été enregistrée');
+            $this->addFlash('success', 'La peinture à bien été enregistrée');
 
             return $this->redirectToRoute('app_paint');
         }
