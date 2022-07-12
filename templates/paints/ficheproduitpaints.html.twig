@@ -5,7 +5,7 @@
 {% block body %}
 {% block stylesheets %}
     {{parent()}}
-    <link rel="stylesheet" href="css/paints.css">
+    <link rel="stylesheet" href="css/ficheproduitpaints.css">
 {% endblock %} 
   <div class="d-flex align-items-center justify-content-between">
         <h1 class="text-center">{{ paints.title }}</h1>
@@ -16,18 +16,18 @@
     <div class="text-center">
     <img src="{{ paints.cover }}" class="rounded" alt="peinture" width="250px">
     </div>
-    <p class="display-6 m-3">Destination</p>
-    <div class="row container">
-    <div class="col-md-7">
-    <h2 class="display-8 m-3">{{paints.destination}}</h2>
-    <p class="display-6 m-3">Caractéristiques</p>
-    <div class="row container">
-    <div class="col-md-8">
-    <h3 class="display-7 m-3">{{paints.features}}</h3>
-    <div class="row container">
-    <div class="col-md-8">
-    <h4 class="display-0 m-1">{{paints.description}}</h4>
-    </div>
-    </div> 
+    <h2 class="pt-5 fs-1 pb-4">Destination</h2>
+    <p class="fs-4 ms-5"{{paints.destination|nl2br}}</p>
+    
+    <h2 class="pt-5 fs-1">Caractéristiques</h2>
+    <p class="fs-3 ms-5"{{paints.features|nl2br}}</p>
+
+    <h2 class="pt-5 fs-3 fw-bold">{{paints.description|nl2br}}</h2>
+   
+
+
+
+
+   
 {% endif %}
 {% endblock %}

@@ -9,7 +9,7 @@
 
 {% block body %}
     <main class="container">
-       <section class="row">
+       <section class="row ">
        <div class="col-12">
       <h1 class="text-center">Paints</h1>
       <p class="text-center">Liste de tous les peintures</p>
@@ -19,7 +19,8 @@
       <div class="card h-100">
       <div class="card-body text-center">
       <h3 class="text-center card-title">{{ paint.title }}</h3>
-      <a href="{{ path('ficheproduit_paints', { id: paint.id }) }}" img src="{{paint.cover}}" width="150px">
+      <img src=" {{ asset(paint.cover ) | imagine_filter('vignette')}}" width="150px">
+      <a href="{{ path('ficheproduit_paints', { id: paint.id }) }}">
       <a href="{{ path('ficheproduit_paints', { id: paint.id }) }}" class="btn btn-warning">
       Voir la fiche produit
     </a>
