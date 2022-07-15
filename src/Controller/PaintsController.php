@@ -18,7 +18,7 @@ class PaintsController extends AbstractController
         $paints = $paginatorInterface->paginate(
             $paintsRepository->findAll(),
             $request->query->getInt('page', 1),
-            6
+            7
         );
     
 

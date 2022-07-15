@@ -7,10 +7,10 @@
     {{parent()}}
     <link rel="stylesheet" href="css/ficheproduitpaints.css">
 {% endblock %} 
-  <div class="d-flex align-items-center justify-content-between">
-        <h1 class="text-center">{{ paints.title }}</h1>
-        <p class="display-6">{{ paints.price }}€</p>
-    </div>
+
+    <h1 class="display-4 text-center">{{ paints.title }}</h1>
+    {# <p class="display-6">{{ paints.price }}€</p> #}
+    
 
     {% if vich_uploader_asset(paints, 'coverFile') is not null %}
     <div class="text-center">

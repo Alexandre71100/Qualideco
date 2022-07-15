@@ -10,10 +10,11 @@
 <p class="text-center">Liste de tous les Category</p>
 </div>
 {% for category in category  %}
-<div class="row col-4">
+<div class="text-center">
+<div class="row" style="width:15rem;">
 <div class="card h-100">
 <div class="card-body">
-<a href="{{ path('app_category', { id: category.id }) }} paints/ficheproduitpaints.html.twig" class="card-title"> {{ category.name }}</a>
+<a href="{{ path('app_paints', { id: category.id }) }}" class="text-decoration-none card-title">{{ category.name }}</a>
 </div>
 </div>
 </div>
