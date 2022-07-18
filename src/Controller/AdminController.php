@@ -18,8 +18,9 @@ use App\Repository\SubCategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-
+#[IsGranted('ROLE_ADMIN')]
 class AdminController extends AbstractController
 {
     #[Route('/admin', name: 'app_admin')]
@@ -36,7 +37,7 @@ class AdminController extends AbstractController
      */
 
     // Liste Catégorie
-    #[Route('/category', name: 'app_category')]
+    #[Route('/admin/category', name: 'app_admin_category')]
     public function listingCategoty(CategoryRepository $categoryRepository, PaginatorInterface $paginatorInterface, Request $request): Response
     {
         $categories = $paginatorInterface->paginate(
@@ -51,7 +52,7 @@ class AdminController extends AbstractController
     }
 
     // Formulaire d'ajout d'un Catégorie
-    #[Route('/newCategory', name: 'app_new_category')]
+    #[Route('/admin/newCategory', name: 'app_new_category')]
     public function newCategory(Request $request, CategoryRepository $categoryRepository): Response
     {
         $category = new Category();
@@ -62,7 +63,7 @@ class AdminController extends AbstractController
             $categoryRepository->add($category, true);
             $this->addFlash('success', 'La catégorie à bien été enregistrée');
 
-            return $this->redirectToRoute('app_category');
+            return $this->redirectToRoute('app_admin_category');
         }
 
         return $this->render('admin/category/newCategory.html.twig', [
@@ -71,7 +72,7 @@ class AdminController extends AbstractController
     }
 
     // Edition d'une Catégorie
-    #[Route('/category/edit/{id}', name: 'app_edit_category', requirements: ['id' => '\d+'])]
+    #[Route('/admin/category/edit/{id}', name: 'app_edit_category', requirements: ['id' => '\d+'])]
     public function editCategory(Category $category, Request $request, CategoryRepository $categoryRepository): Response
     {
         $form = $this->createForm(CategoryFormType::class, $category);
@@ -81,7 +82,7 @@ class AdminController extends AbstractController
             $categoryRepository->add($category, true);
             $this->addFlash('success', 'La catégorie à bien été enregistrée');
 
-            return $this->redirectToRoute('app_category');
+            return $this->redirectToRoute('app_admin_category');
         }
 
         return $this->render('admin/category/editCategory.html.twig', [
@@ -89,7 +90,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/category/delete/{id}', name:'category_delete', requirements: ['id' => '\d+'], methods: ['POST'])]
+    #[Route('/admin/category/delete/{id}', name:'category_delete', requirements: ['id' => '\d+'], methods: ['POST'])]
     public function deleteCategory(Category $category, Request $request, CategoryRepository $categoryRepository): RedirectResponse
     {
 		// Récupère le jeton CSRF généré dans le formulaire
@@ -107,14 +108,14 @@ class AdminController extends AbstractController
         }
 
 		// Redirige l'utilisateur vers une autre page selon le nom de la route
-        return $this->redirectToRoute('app_category');
+        return $this->redirectToRoute('app_admin_category');
     }
 
     /**
      * Sous-Catégorie
      */
 
-    #[Route('/subcategory', name: 'app_subCategory')]
+    #[Route('/admin/subcategory', name: 'app_subCategory')]
     public function listingsubCategory(SubCategoryRepository $subCategoryRepository, PaginatorInterface $paginatorInterface, Request $request): Response
     {
 
@@ -130,7 +131,7 @@ class AdminController extends AbstractController
     }
 
 
-    #[Route('/newsubCategory', name: 'app_new_subcategory')]
+    #[Route('/admin/newsubCategory', name: 'app_new_subcategory')]
     public function newsubCategory(Request $request, SubCategoryRepository $subCategoryRepository): Response
     {
         $subcategory = new SubCategory();
@@ -150,7 +151,7 @@ class AdminController extends AbstractController
     }
 
 
-    #[Route('/subcategory/edit/{id}', name: 'app_edit_subcategory', requirements: ['id' => '\d+'])]
+    #[Route('/admin/subcategory/edit/{id}', name: 'app_edit_subcategory', requirements: ['id' => '\d+'])]
     public function editsubCategory(SubCategory $subCategory, Request $request, SubCategoryRepository $subCategoryRepository): Response
     {
         $form = $this->createForm(SubCategoryFormType::class, $subCategory);
@@ -168,7 +169,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/subCategory/delete/{id}', name:'subCategory_delete', requirements: ['id' => '\d+'], methods: ['POST'])]
+    #[Route('/admin/subCategory/delete/{id}', name:'subCategory_delete', requirements: ['id' => '\d+'], methods: ['POST'])]
     public function deletesubCategory(SubCategory $subCategory, Request $request, SubCategoryRepository $subCategoryRepository): RedirectResponse
     {
 		// Récupère le jeton CSRF généré dans le formulaire
@@ -193,7 +194,7 @@ class AdminController extends AbstractController
       * Peinture
       */
 
-    #[Route('/paint', name: 'app_paint')]
+    #[Route('/admin/paint', name: 'app_paint')]
     public function listingPaint(PaintsRepository $paintsRepository, PaginatorInterface $paginatorInterface, Request $request): Response
     {
 
@@ -208,7 +209,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/newpaint', name: 'app_new_paint')]
+    #[Route('/admin/newpaint', name: 'app_new_paint')]
     public function newPaint(Request $request, PaintsRepository$paintsRepository): Response
     {
         $paints = new Paints();
@@ -217,7 +218,7 @@ class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $paintsRepository->add($paints, true);
-            $this->addFlash('success', 'La catégorie à bien été enregistrée');
+            $this->addFlash('success', 'La peinture à bien été enregistrée');
 
             return $this->redirectToRoute('app_paint');
         }
@@ -228,7 +229,7 @@ class AdminController extends AbstractController
     }
 
 
-    #[Route('/paint/edit/{id}', name: 'app_edit_paint', requirements: ['id' => '\d+'])]
+    #[Route('/admin/paint/edit/{id}', name: 'app_edit_paint', requirements: ['id' => '\d+'])]
     public function editPaint(Paints $paints, Request $request, PaintsRepository $paintsRepository): Response
     {
         $form = $this->createForm(PaintsFormType::class, $paints);
@@ -236,7 +237,7 @@ class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $paintsRepository->add($paints, true);
-            $this->addFlash('success', 'La catégorie à bien été enregistrée');
+            $this->addFlash('success', 'La peinture à bien été enregistrée');
 
             return $this->redirectToRoute('app_paint');
         }
@@ -246,7 +247,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/paints/{id}', name: 'details_paints', requirements:['id' => '\d+'])]
+    #[Route('/admin/paints/{id}', name: 'details_paints', requirements:['id' => '\d+'])]
     public function details(Paints $paints): Response
     {
 		/**

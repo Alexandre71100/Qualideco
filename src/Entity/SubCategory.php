@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SubCategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -23,6 +25,14 @@ class SubCategory
     #[ORM\ManyToOne(targetEntity: Category::class)]
     #[ORM\JoinColumn(nullable: false)]
     private $category;
+
+    #[ORM\OneToMany(mappedBy: 'subCategory', targetEntity: Paints::class)]
+    private $paints;
+
+    public function __construct()
+    {
+        $this->paints = new ArrayCollection();
+    }
 
  
 
@@ -51,6 +61,36 @@ class SubCategory
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Paints>
+     */
+    public function getPaints(): Collection
+    {
+        return $this->paints;
+    }
+
+    public function addPaint(Paints $paint): self
+    {
+        if (!$this->paints->contains($paint)) {
+            $this->paints[] = $paint;
+            $paint->setSubCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removePaint(Paints $paint): self
+    {
+        if ($this->paints->removeElement($paint)) {
+            // set the owning side to null (unless already changed)
+            if ($paint->getSubCategory() === $this) {
+                $paint->setSubCategory(null);
+            }
+        }
 
         return $this;
     }

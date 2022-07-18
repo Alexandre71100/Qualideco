@@ -2,9 +2,10 @@
 
 {% block title %} Paints{% endblock %}
 
+
 {% block body %}
     <main class="container">
-       <section class="row">
+       <section class="row ">
        <div class="col-12">
       <h1 class="text-center">Paints</h1>
       <p class="text-center">Liste de tous les peintures</p>
@@ -12,9 +13,12 @@
       {% for paint in paints %}
       <div class="col-4 py-5">
       <div class="card h-100">
-      <div class="card-body">
-      <h3 class="card-title">{{ paint.title }}</h3>
-      <a href="#" class="btn btn-warning">Voir la fiche produit</a> 
+      <div class="card-body text-center">
+      <h3 class="text-center card-title">{{ paint.title }}</h3>
+      <img src=" {{ asset(paint.cover ) | imagine_filter('vignette')}}" width="150px">
+      <a href="{{ path('ficheproduit_paints', { id: paint.id }) }}" class="btn btn-warning">
+      Voir la fiche produit
+    </a>
    </div>
    </div>
    <a href="#"></a>

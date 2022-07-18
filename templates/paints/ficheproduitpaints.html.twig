@@ -1,0 +1,33 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Peintures !{% endblock %}
+
+{% block body %}
+{% block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="css/ficheproduitpaints.css">
+{% endblock %} 
+
+    <h1 class="display-4 text-center">{{ paints.title }}</h1>
+    {# <p class="display-6">{{ paints.price }}€</p> #}
+    
+
+    {% if vich_uploader_asset(paints, 'coverFile') is not null %}
+    <div class="text-center">
+    <img src="{{ paints.cover }}" class="rounded" alt="peinture" width="250px">
+    </div>
+    <h2 class="pt-5 fs-1 pb-4">Destination</h2>
+    <p class="fs-4 ms-5"{{paints.destination|nl2br}}</p>
+    
+    <h2 class="pt-5 fs-1">Caractéristiques</h2>
+    <p class="fs-3 ms-5"{{paints.features|nl2br}}</p>
+
+    <h2 class="pt-5 fs-3 fw-bold">{{paints.description|nl2br}}</h2>
+   
+
+
+
+
+   
+{% endif %}
+{% endblock %}

@@ -3,13 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\PaintsRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\Category;
 
 #[ORM\Entity(repositoryClass: PaintsRepository::class)]
 #[Vich\Uploadable] 
@@ -21,19 +20,13 @@ class Paints
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\OneToMany(mappedBy: 'no', targetEntity: Category::class)]
-
-    private $category;
-
-    #[ORM\OneToMany(mappedBy: 'no', targetEntity: SubCategory::class)]
-    private $subCategory;
-
     #[Assert\NotBlank(message:"Le titre de la peinture est obligatoire")]
 
     #[ORM\Column(type: 'string', length: 80)]
     private $title;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\JoinColumn(nullable: true)]
     private $cover;
 
 
@@ -50,11 +43,13 @@ class Paints
     #[ORM\Column(type: 'text')]
     private $description;
 
-    #[Assert\NotBlank()]
+    #[Assert\NotBlank(message:"Le prix de la peinture est obligatoire")]
     #[ORM\Column(type: 'integer')]
     private $price;
 
-    #[Assert\NotBlank(message:"L'image est obligatoire'")]
+    
+    // #[Assert\NotBlank(message:"L'image est obligatoire'")]
+    #[ORM\JoinColumn(nullable: true)]
     #[Vich\UploadableField(mapping: 'products', fileNameProperty: 'cover')]
     #[Assert\Image(mimeTypesMessage: 'Ce fichier n\'est pas une image')]
     #[Assert\File(maxSize: '1M', maxSizeMessage: 'Le fichier ne doit pas dépasser les {{ limit }} {{ suffix }}')]
@@ -63,77 +58,18 @@ class Paints
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private $updated_at;
 
-    public function __construct()
-    {
-        $this->category = new ArrayCollection();
-        $this->subCategory = new ArrayCollection();
-    }
+    #[Assert\NotBlank(message:"La catégorie de la peinture est obligatoire")]
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'paints')]
+    #[ORM\JoinColumn(nullable: true)]
+    private $category;
+
+    #[ORM\ManyToOne(targetEntity: SubCategory::class, inversedBy: 'paints')]
+    #[ORM\JoinColumn(nullable: true)]
+    private $subCategory;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    /**
-     * @return Collection<int, category>
-     */
-    public function getCategory(): Collection
-    {
-        return $this->Category;
-    }
-
-
-    public function addCategory(Category $category): self
-
-    {
-        if (!$this->category->contains($category)) {
-            $this->category[] = $category;
-            $category->setNo($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(Category $category): self
-    {
-        if ($this->category->removeElement($category)) {
-            // set the owning side to null (unless already changed)
-            if ($category->getNo() === $this) {
-                $category->setNo(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, subCategory>
-     */
-    public function getSubCategory(): Collection
-    {
-        return $this->subCategory;
-    }
-
-    public function addSubCategory(SubCategory $subCategory): self
-    {
-        if (!$this->subCategory->contains($subCategory)) {
-            $this->subCategory[] = $subCategory;
-            $subCategory->setNo($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSubCategory(subCategory $subCategory): self
-    {
-        if ($this->subCategory->removeElement($subCategory)) {
-            // set the owning side to null (unless already changed)
-            if ($subCategory->getNo() === $this) {
-                $subCategory->setNo(null);
-            }
-        }
-
-        return $this;
     }
 
     public function getTitle(): ?string
@@ -153,7 +89,7 @@ class Paints
         return $this->cover;
     }
 
-    public function setCover(string $cover): self
+    public function setCover(?string $cover): self
     {
         $this->cover = $cover;
 
@@ -233,6 +169,30 @@ class Paints
     public function setUpdatedAt(?\DateTimeImmutable $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getSubCategory(): ?SubCategory
+    {
+        return $this->subCategory;
+    }
+
+    public function setSubCategory(?SubCategory $subCategory): self
+    {
+        $this->subCategory = $subCategory;
 
         return $this;
     }

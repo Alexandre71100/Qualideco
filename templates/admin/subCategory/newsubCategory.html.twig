@@ -1,21 +1,27 @@
-{% extends 'base.html.twig' %}
+{% extends 'base1.html.twig' %}
+
+{% block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="/css/admin.css">
+{% endblock %}
 
 {% block title %}Nouvelle sous catégorie{% endblock %}
 
 {% block body %}
 
-    <div class="align-items-center justify-content-between pb-5 py-3">
-        <h1 class="display-5 m-0 text-center">Nouvelle sous catégorie de peinture</h1>
-    </div>
+    <div class="container">
+        <div class="d-flex align-items-center justify-content-between py-3">
+            <div>
+                <h1 class="display-5 m-0">Nouvelle sous catégorie de peinture</h1>
+            </div>
+            <a href="{{ path('app_subCategory') }}" title="Retour à la liste" class="btn btn-warning">
+                Retour à la liste
+            </a>
+        </div>
 
-    <div>
-        <a href="{{ path('app_subCategory') }}" title="Retour à la liste" class="btn btn-outline-secondary">
-            Retour à la liste
-        </a>
-    </div>
-
-    <div class="w-50 mx-auto">
-        {{ form(form) }}
+        <div class="w-50 mx-auto formframe">
+            {{ form(form)}}
+        </div>
     </div>
 
 {% endblock %}

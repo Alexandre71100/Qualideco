@@ -1,4 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'base1.html.twig' %}
+
+{% block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="/css/admin.css">
+{% endblock %}
 
 {% block title %}Hello AdminController!{% endblock %}
 
@@ -6,7 +11,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class='container'>
-  <a class="navbar-brand" href="#">Qualideco</a>
+  <a class="navbar-brand" href="{{ path('app_home') }}">Qualideco</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -17,7 +22,7 @@
         <a class="nav-link" href="{{ path('app_paint') }}">Peinture</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('app_category') }}">Categorie</a>
+        <a class="nav-link" href="{{ path('app_admin_category') }}">Categorie</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ path('app_subCategory') }}">Sous Catégorie</a>
@@ -33,6 +38,16 @@
 <main>
 
   <h1 class='text-center py-4'> Administration Qualideco </h1>
+
+  {# <img src="images/qualideco.deventure.jpg" width="50%" class="" > #}
+
+<div class="row">
+    <div class="mx-auto text-center">
+        <img src="images/qualideco.deventure.jpg" width="50%">
+    </div>
+</div>
+
+
 
 </main>
 

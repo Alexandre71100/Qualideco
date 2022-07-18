@@ -18,7 +18,7 @@ class PaintsController extends AbstractController
         $paints = $paginatorInterface->paginate(
             $paintsRepository->findAll(),
             $request->query->getInt('page', 1),
-            5
+            7
         );
     
 
@@ -27,4 +27,19 @@ class PaintsController extends AbstractController
             
         ]);
     }
+
+    #[Route('/paints/{id}', name: 'ficheproduit_paints', requirements:['id' => '\d+'])]
+    public function details(paints $paints): Response
+    {
+		/**
+		 * Grâce à l'injection de dépendance et à l'ID passée en paramètre de la requête, Doctrine effectue la
+		 * sélection en BDD de manière automatique. Si l'ID est inexistant, une erreur 404 est retournée.
+		 */
+
+        return $this->render('paints/ficheproduitpaints.html.twig', [
+            'paints' => $paints
+        ]);
+    }
 }
+
+
