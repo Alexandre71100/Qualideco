@@ -1,14 +1,16 @@
 {% extends 'base1.html.twig' %}
 
-{% block title %}Peintures !{% endblock %}
-
-{% block body %}
 {% block stylesheets %}
     {{parent()}}
-    <link rel="stylesheet" href="css/ficheproduitpaints.css">
+    <link rel="stylesheet" href="css/ficheproduit.css">
 {% endblock %} 
 
-    <h1 class="display-4 text-center">{{ paints.title }}</h1>
+{% block title %}Peintures !{% endblock %}
+
+
+{% block body %}
+
+   <h1 class="display-4 text-center">{{ paints.title }}</h1>
     {# <p class="display-6">{{ paints.price }}€</p> #}
     
 
