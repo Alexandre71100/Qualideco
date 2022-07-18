@@ -9,7 +9,6 @@
 {% endblock %}
 
 {% block body %}
-	{{ include('component/navbar.html.twig') }}
 	{{ include('component/carousel.html.twig') }}
 	{{ include('component/AboutUs.html.twig') }}
 	{{ include('component/category.html.twig') }}
@@ -17,4 +16,5 @@
     {{ include('component/contact.html.twig') }}
     <hr>
     {{ include('component/footer.html.twig') }}
+	<a href="{{ path('app_pdf') }}">pdf</a>
 {% endblock %}

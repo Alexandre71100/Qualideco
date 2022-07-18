@@ -1,26 +1,25 @@
-<div class="slide_category container">
-	<ul class="category list-unstyled text-center">
-		<button class='btn btn-primary'>
-			<a href="#" class="text-dark text-decoration-none bg-dark">
-				PRIMAIRE / IMPRESSION</a>
-		</button class='btn btn-primary'>
-		<button
-			<a href="#" class="text-dark text-decoration-none bg-warning">FINITIONS</a>
-		</button class='btn btn-primary'>
-		<button class='btn btn-primary'>
-			<a href="#" class="text-dark text-decoration-none bg-light">DECORATION</a>
-		</button class='btn btn-primary'>
-		<button class='btn btn-primary'>
-			<a href="#" class="text-dark text-decoration-none bg-primary">FAçADE</a>
-		</button class='btn btn-primary'>
-		<button class='btn btn-primary'>
-			<a href="#" class="text-dark text-decoration-none bg-success">BOIS</a>
-		</button class='btn btn-primary'>
-		<button class='btn btn-primary'>
-			<a href="#" class="text-dark text-decoration-none bg-secondary">SOLS</a>
-		</button class='btn btn-primary'>
-		<button class='btn btn-primary'>
-			<a href="#" class="text-dark text-decoration-none bg-danger">MéTAUX</a>
-		</button class='btn btn-primary'>
-	</ul>
-</div>
+{% block title %}
+	
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<section class="row">
+			<div class="col-12">
+				<h1 class="text-center">hot sales 🔥</h1>
+			</div>
+			{% for paint in paints %}
+				<div class="col-4 py-5">
+					<div class="card h-100">
+						<div class="card-body">
+							<h3 class="card-title">{{ paint.title }}</h3>
+							<a href="#" class="btn btn-warning">Voir la fiche produit</a>
+						</div>
+					</div>
+					<a href="#"></a>
+				</div>
+			{% endfor %}
+		</section>
+	</main>
+	
+{% endblock %}
