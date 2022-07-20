@@ -1,17 +1,43 @@
 {% extends 'base1.html.twig' %}
 
+{% block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="/css/details.css">
+{% endblock %}
+
 {% block title %}Peintures !{% endblock %}
 
 {% block body %}
 
-    <div class="d-flex align-items-center justify-content-between">
-        <h1 class="display-4">{{ paints.title }}</h1>
-        <p class="display-6">{{ paints.price }}€</p>
-    </div>
+    <div class="container">
+        <div class="d-flex align-items-center justify-content-between py-3">
+            <div>
+                <h1 class="display-5 m-0">{{paints.category}}</h1>
+            </div>
+            <a href="{{ path('app_paint') }}" title="Retour à la liste" class="btn btn-warning">
+                Retour à la liste
+            </a>
+        </div>
 
-    {% if vich_uploader_asset(paints, 'coverFile') is not null %}
-        <img src="{{ paints.cover }}" alt="peinture" width="250px">                  
-    {% endif %}
+        <h1 class="display-4 text-center">{{ paints.title }}</h1>
+        {# <p class="display-6">{{ paints.price }}€</p> #}
+    
+
+        {% if vich_uploader_asset(paints, 'coverFile') is not null %}
+            <img src="{{ paints.cover }}" alt="peinture" width="250px">                  
+        {% endif %}
+
+        <h2 class="pt-5"> DESTINATION</h2>
+        {{ paints.destination |nl2br}}
+
+
+        <h2 class="pt-5"> CARACTÉRISTIQUES</h2>
+        {{ paints.features |nl2br}}
+
+        <h2 class="pt-5"> Descritpion</h2>
+        {{ paints.description |nl2br }}
+
+    </div>
 
 
 {% endblock %}

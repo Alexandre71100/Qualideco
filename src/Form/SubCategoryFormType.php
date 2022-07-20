@@ -27,7 +27,7 @@ class SubCategoryFormType extends AbstractType
 
             ] )
             ->add('save', SubmitType::class, [
-                'label' => 'Enregistrer'
+                'label' => 'Enregistrer',
             ])
         ;
     }
