@@ -15,6 +15,8 @@ class PaintsController extends AbstractController
     #[Route('/paints', name: 'app_paints')]
     public function index(PaintsRepository $paintsRepository, PaginatorInterface $paginatorInterface, Request $request): Response
     {
+
+
         $paints = $paginatorInterface->paginate(
             $paintsRepository->findAll(),
             $request->query->getInt('page', 1),

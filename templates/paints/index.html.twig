@@ -21,7 +21,7 @@
       <div class="card h-100">
       <div class="card-body text-center">
       <h3 class="text-center card-title">{{ paint.title }}</h3>
-      <img src=" {{ asset(paint.cover ) | imagine_filter('vignette')}}" width="150px">
+      <img src="{{ vich_uploader_asset(paint, 'coverFile')|imagine_filter('vignette') }}" alt="Image">
       <a href="{{ path('ficheproduit_paints', { id: paint.id }) }}" class="btn btn-warning">
       Voir la fiche produit
     </a>
