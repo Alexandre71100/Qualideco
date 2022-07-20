@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Paints{% endblock %}
+{% block title %} Paints {% endblock %}
 
 
 {% block body %}
@@ -15,7 +15,9 @@
       <div class="card h-100">
       <div class="card-body">
       <h3 class="card-title">{{ paint.title }}</h3>
-      <a href="#" class="btn btn-warning">Voir la fiche produit</a> 
+      <img src="{{ vich_uploader_asset(paint, 'coverFile')|imagine_filter('vignette') }}" alt="Image">
+
+      <a href="#" class="btn btn-warning">Voir la fiche produit</a>
    </div>
    </div>
    <a href="#"></a>

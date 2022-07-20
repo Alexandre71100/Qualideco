@@ -14,25 +14,17 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('email', EmailType::class, [
-            'label' => 'Adresse e-mail',
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'L\'adresse e-mail est obligatoire'
-                ]),
-                new Email([
-                    'message' => 'Cet adresse e-mail est invalide'
-                ])
-            ]
-        ])
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Le prénom est obligatoire'
@@ -41,37 +33,58 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('lastname', TextType::class, [
                 'label' => 'Nom',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Le nom est obligatoire'
                     ])
                 ]
             ])
-            ->add('phone')
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
+            ->add('email', EmailType::class, [
+                'label' => 'Adresse e-mail',
+                'required' => false,
                 'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                    new NotBlank([
+                        'message' => 'L\'adresse e-mail est obligatoire'
                     ]),
-                ],
+                    new Email([
+                        'message' => 'Cet adresse e-mail est invalide'
+                    ])
+                ]
             ])
-            ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
+            ->add('phone')
+            ->add('plainPassword', RepeatedType::class, [
+                'label' => false,
+                'required' => false,
+                'type' => PasswordType::class,
+                'invalid_message' => 'Les mots de passes ne correspondent pas',
+                'first_options' => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Confirmation du mot de passe'],
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Le mot de passe est obligatoire',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
+                        'minMessage' => 'Le mot de passe doit contenir au minimum {{ limit }} caractères',
                         'max' => 4096,
                     ]),
                 ],
+            ])
+            ->add('agreeTerms', CheckboxType::class, [
+                'mapped' => false,
+                'required' => false,
+                'label' => 'J\'accepte...',
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Vous devez accepter les termes...',
+                    ]),
+                ],
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'Ouvrir mon compte'
             ])
         ;
     }
