@@ -16,7 +16,7 @@
 
     {% if vich_uploader_asset(paints, 'coverFile') is not null %}
     <div class="text-center">
-    <img src="{{ paints.cover }}" class="rounded mg" alt="peinture" width="250px">
+    <img src="{{ vich_uploader_asset(paints, 'coverFile')|imagine_filter('vignette') }}" alt="Image"> 
     </div>
     <h2 class="pt-5 fs-1 pb-4">Destination</h2>
     <p class="fs-4 ms-5"{{paints.destination|nl2br}}</p>
