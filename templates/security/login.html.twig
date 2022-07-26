@@ -20,9 +20,9 @@
 
     {# {% if app.user %}
         <div class="mb-3">
-            {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}"></a>
+            {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
         </div>
-    {% endif %}  #}
+    {% endif %} #}
               
                 <h1>Connexion Administration</h1>
             
@@ -31,14 +31,22 @@
             
                     <label for="password"> Mot de passe </label>
                     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                    <img src="" >
             
 
                     <input type="hidden" name="_csrf_token"
                     value="{{ csrf_token('authenticate') }}"
                     >
 
-                <button type="submit">Connexion</button>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                    </label>
+                </div>
+
+                <button type="submit">Connexion</button>
             </form>       
             
         </section>    
