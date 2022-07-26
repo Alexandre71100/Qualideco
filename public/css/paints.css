@@ -40,3 +40,18 @@ img{
 footer{
     padding: 5rem;
 }
+
+@media screen and (max-width: 1280px) {
+    .card{
+        width: 100%;
+        align-items: center;
+       
+        
+        
+    }
+
+    .footer{
+        padding: 10rem;
+    }
+
+}
