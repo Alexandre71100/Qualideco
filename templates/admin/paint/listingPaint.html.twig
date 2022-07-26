@@ -44,7 +44,6 @@
                 <th>Image</th>
                 <th>Destination</th>
                 <th>Caractéristique</th>
-                {# <th>Description</th> #}
                 <th>Prix</th>
                 <th>Actions</th>
             </tr>
@@ -58,16 +57,9 @@
                         </div>
                     </td>
                     <td>
-                        {# {% if vich_uploader_asset(paint, 'coverFile') is not null %}
-                            <img src="{{ vich_uploader_asset(paint, 'coverFile') }}" width='70px'>  
-                        {% endif %} #}
-
                         {% if vich_uploader_asset(paint, 'coverFile') is not null %}
-                            <img src="{{ paint.cover }}" alt="peinture" width="70px">                  
-                        {% else %}
-                            <img src="{{ vich_uploader_asset(paint, 'coverFile') }}" width='70px'>     
-                        {% endif %}
-                        
+                            <img src="{{ vich_uploader_asset(paint, 'coverFile') }}" width='70px'>  
+                        {% endif %}              
                     </td>
                     <td>
                         <div class="d-flex align-items-center">
@@ -79,23 +71,19 @@
                             {{ paint.features }}
                         </div>
                     </td>
-                    {# <td>
-                        <div class="d-flex align-items-center">
-                            {{ paint.description }}
-                        </div>
-                    </td> #}
                     <td>
                         <div class="d-flex align-items-center">
                            <p> {{ paint.price }}€</p>
                         </div>
                     </td>
                     <td> 
-
                         <a href="{{ path('details_paints', { id: paint.id }) }}" class="btn btn-outline-warning btn-sm">
                             Voir plus de détails...
                         </a>
 
-                        <a href="{{ path('app_edit_paint', { id: paint.id }) }}" title="Editer cette peinture" class="btn btn-sm btn-outline-secondary">Editer</a>
+                        <a href="{{ path('app_edit_paint', { id: paint.id }) }}" title="Editer cette peinture" class="btn btn-sm btn-outline-secondary">
+                            Editer
+                        </a>
                         
                         <form action="{{ path('paint_delete', { id: paint.id }) }}" method="post" class="d-inline">
                             <input type="hidden" name="token" value="{{ csrf_token('delete-paint-'~ paint.id) }}">

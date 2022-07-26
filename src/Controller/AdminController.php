@@ -51,7 +51,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    // Formulaire d'ajout d'un Catégorie
+    // Formulaire d'ajout d'une Catégorie
     #[Route('/admin/newCategory', name: 'app_new_category')]
     public function newCategory(Request $request, CategoryRepository $categoryRepository): Response
     {

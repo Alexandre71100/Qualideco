@@ -24,7 +24,7 @@
     
 
         {% if vich_uploader_asset(paints, 'coverFile') is not null %}
-            <img src="{{ paints.cover }}" alt="peinture" width="250px">                  
+            <img src="{{ vich_uploader_asset(paints, 'coverFile') }}" width='250px'>  
         {% endif %}
 
         <h2 class="pt-5"> DESTINATION</h2>

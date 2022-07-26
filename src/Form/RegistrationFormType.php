@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use VictorPrdh\RecaptchaBundle\Form\ReCaptchaType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -82,6 +83,9 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Vous devez accepter les termes...',
                     ]),
                 ],
+            ])
+            ->add('captcha', ReCaptchaType::class, [
+                'required' => false,
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Ouvrir mon compte'
