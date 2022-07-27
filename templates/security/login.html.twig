@@ -1,18 +1,24 @@
 {% extends 'base1.html.twig' %}
 
-{% block title %}Connexion Administration{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block stylesheets %}
     {{parent()}}
     <link rel="stylesheet" href="/css/login.css">
 {% endblock %}
 
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/login.js') }}" defer></script>
+{% endblock %}
+
 {% block body %}
 
-    <main>
+    {# <main>
 
-        <section class="connexion">
-            <form method="post"> 
+         <section class="connexion">
+            <form method="post">  #}
 
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -24,14 +30,13 @@
         </div>
     {% endif %} #}
               
-                <h1>Connexion Administration</h1>
+                 {# <h1>Connexion Administration</h1>
             
                     <label for="email"> Email adresse </label>
                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
             
                     <label for="password"> Mot de passe </label>
                     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-                    <img src="" >
             
 
                     <input type="hidden" name="_csrf_token"
@@ -52,10 +57,81 @@
         </section>    
 
         <section class="image">
-        </section>
+        </section> #}
+
+<div class="container">
+        <div class="signin-signup">
+            <form method="post" class="sign-in-form">
+                <h2 class="title">Connexion</h2>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" placeholder="Adresse Email" required autofocus>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" id="inputPassword" autocomplete="current-password" placeholder="Mot de passe" required>
+                </div>
+
+                    <input type="hidden" name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}"
+                    >
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                <input type="submit" value="Connexion" class="btn">
+
+                <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn2">Sign up</a></p>
+            </form>
+
+
+            <form method="post" class="sign-up-form">
+                <h2 class="title">S'inscrire</h2>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="username" id="inputUsername" autocomplete="Username" placeholder="Prénom" required autofocus>
+                </div>
+                 <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="username" id="inputUsername" autocomplete="Username" placeholder="Nom" required autofocus>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" placeholder="Adresse Email" required autofocus>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="phone" id="inputPhone" autocomplete="phone" placeholder="Téléphone" required autofocus>
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" id="inputPassword" autocomplete="current-password" placeholder="Mot de passe" required>
+                </div>
+                <input type="submit" value="S'inscrire" class="btn">
+                <p class="account-text">Already have an account? <a href="#" id="sign-in-btn2">Sign in</a></p>
+            </form>
+        </div>
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>Un de nous?</h3>
+                    <p>Si vous avez déjà votre propre compte, connectez-vous simplement.</p>
+                    <button class="btn" id="sign-in-btn">Connexion</button>
+                </div>
+                <img src="signin.svg" alt="" class="image">
+            </div>
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>Nouveau ici?</h3>
+                    <p>Inscrivez-vous et découvrez un nouveau monde de possibilités</p>
+                    <button class="btn" id="sign-up-btn">S'inscrire</button>
+                </div>
+                <img src="signup.svg" alt="" class="image">
+            </div>
+        </div>
+    </div>
     
 
-    </main>
+    {# </main> #}
 
 {% endblock %}
 
