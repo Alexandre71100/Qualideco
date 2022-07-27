@@ -15,7 +15,7 @@ class HomeController extends AbstractController
     public function index(PaintsRepository $paintsRepository,  Request $request): Response
     {
        
-        $paints = $paintsRepository->findall(106);
+        $paints = $paintsRepository->findBy(["title" => "Capitole aqua primaire universel","title" => "Calanque impression","title" => "Esterel impression"]);
            
         return $this->render('home/index.html.twig', [
             'paints' => $paints
