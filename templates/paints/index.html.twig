@@ -10,15 +10,10 @@
 
 
 {% block body %}
-    <main class="container">
-       <section class="row ">
-       <div class="col-12">
-      <h1 class="text-center">Paints</h1>
-      <p class="text-center">Liste de tous les peintures</p>
-      </div>
+    <main class="container py-5">
+       <section class="row">
       {% for paint in paints %}
         <div class="col-4 py-5">
-            <div class="card h-100">
                 <div class="card-body text-center">
                     <h3 class="text-center card-title">{{ paint.title }}</h3>
                     <img src="{{ vich_uploader_asset(paint, 'coverFile')|imagine_filter('vignette') }}" alt="Image">
@@ -31,6 +26,7 @@
    {% endfor %}
    </section>
    </main>
+     </section>
    {{ knp_pagination_render(paints, null, {}, {
         'align': 'center',
         'size': 'large',

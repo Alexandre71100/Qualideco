@@ -14,22 +14,22 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CategoryController extends AbstractController
 {
-    #[Route('/category', name: 'app_category')]
-    public function index(PaginatorInterface $paginatorInterface, CategoryRepository $categoryRepository, PaintsRepository $paintsRepository, Request $request): Response
+    #[Route('/category', name: 'app_category', requirements: ['id' => '\d+'])]
+    public function index(PaginatorInterface $paginatorInterface,CategoryRepository $categoryRepository, PaintsRepository $paintsRepository, Request $request): Response
     {
         $category = $paginatorInterface->paginate(
-            $categoryRepository->findAll(),
+            //$idcategory = $categoryRepository->findAll(),
             $request->query->getInt('page', 1),
             $request->query->getInt('numbers', 7)
         );
 
-        // $category = $categoryRepository->findAll();
+        //$category = $categoryRepository->findAll();
         $id = $request->query->get("id");
-        $paints = $paintsRepository->findBy(['category' => $id]);
+        //$paints = $paintsRepository->findAll(['category' => $id]);
 
         return $this->render('category/index.html.twig', [
-            'categorys' => $category,
-            'paints' => $paints
+            'categorys' => $categoryRepository->findAll(),
+            'paint' => $paints
         ]);
     }
 }

@@ -10,17 +10,10 @@
 
 {% block body %}
 {% for category in categorys %}
-<div class="text-center ">
-<div class="row py-4 col-12" style="width:18rem;">
-<div class="card">
-<div class="card-body">
-<a href="{{ path('app_paints', { id: category.id }) }}" class="text-decoration-none card-title">{{ category.name }}</a>
+<div class="container text-center" style="width: 20rem;">
+     <div class="card-body">
+<a href="{{ path('app_paints', { id: category.id }) }}" class="text-decoration-none btn btn-">{{ category.name }}</a>
 </div>
-</div>
-</div>
-</div>
+  </div>
 {% endfor %}
-<div class="col-12">
-</section>
-</main>
 {% endblock %}
