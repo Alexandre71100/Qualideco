@@ -12,6 +12,7 @@
 {% block body %}
     <main class="container py-5">
        <section class="row">
+       <h1 class="text-center fs-2 py-5">Liste de tous les peintures</h1>
       {% for paint in paints %}
         <div class="col-4 py-5">
                 <div class="card-body text-center">
@@ -21,12 +22,11 @@
                     Voir la fiche produit
                     </a>
                 </div>
+               </div>
             </div>
-        </div> 
    {% endfor %}
    </section>
    </main>
-     </section>
    {{ knp_pagination_render(paints, null, {}, {
         'align': 'center',
         'size': 'large',

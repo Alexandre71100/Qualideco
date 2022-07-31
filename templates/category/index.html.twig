@@ -10,10 +10,10 @@
 
 {% block body %}
 {% for category in categorys %}
-<div class="container text-center" style="width: 20rem;">
-     <div class="card-body">
-<a href="{{ path('app_paints', { id: category.id }) }}" class="text-decoration-none btn btn-">{{ category.name }}</a>
-</div>
-  </div>
+    <div class="container text-center" style="width: 20rem;">
+      <div class="card-body">
+    <a href="{{ path('app_paints', { id: category.id }) }}" class="text-decoration-none btn btn-">{{ category.name }}</a>
+    </div>
+      </div>
 {% endfor %}
 {% endblock %}
