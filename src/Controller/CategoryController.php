@@ -18,14 +18,14 @@ class CategoryController extends AbstractController
     public function index(PaginatorInterface $paginatorInterface,CategoryRepository $categoryRepository, PaintsRepository $paintsRepository, Request $request): Response
     {
         $category = $paginatorInterface->paginate(
-            //$idcategory = $categoryRepository->findAll(),
+            $idcategory = $categoryRepository->findAll(),
             $request->query->getInt('page', 1),
             $request->query->getInt('numbers', 7)
         );
 
         //$category = $categoryRepository->findAll();
         $id = $request->query->get("id");
-        //$paints = $paintsRepository->findAll(['category' => $id]);
+        $paints = $paintsRepository->findAll(['category' => $id]);
 
         return $this->render('category/index.html.twig', [
             'categorys' => $categoryRepository->findAll(),
