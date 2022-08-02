@@ -90,6 +90,7 @@ class AdminController extends AbstractController
         ]);
     }
 
+    // Suppression d'une Catégorie
     #[Route('/admin/category/delete/{id}', name:'category_delete', requirements: ['id' => '\d+'], methods: ['POST'])]
     public function deleteCategory(Category $category, Request $request, CategoryRepository $categoryRepository): RedirectResponse
     {
@@ -115,6 +116,7 @@ class AdminController extends AbstractController
      * Sous-Catégorie
      */
 
+    // Liste sous Catégorie
     #[Route('/admin/subcategory', name: 'app_subCategory')]
     public function listingsubCategory(SubCategoryRepository $subCategoryRepository, PaginatorInterface $paginatorInterface, Request $request): Response
     {
@@ -130,7 +132,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-
+    // Formulaire d'ajout d'une sous Catégorie
     #[Route('/admin/newsubCategory', name: 'app_new_subcategory')]
     public function newsubCategory(Request $request, SubCategoryRepository $subCategoryRepository): Response
     {
@@ -150,7 +152,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-
+    // Edition d'une sous Catégorie
     #[Route('/admin/subcategory/edit/{id}', name: 'app_edit_subcategory', requirements: ['id' => '\d+'])]
     public function editsubCategory(SubCategory $subCategory, Request $request, SubCategoryRepository $subCategoryRepository): Response
     {
@@ -169,6 +171,7 @@ class AdminController extends AbstractController
         ]);
     }
 
+    // Suppression d'une sous Catégorie
     #[Route('/admin/subCategory/delete/{id}', name:'subCategory_delete', requirements: ['id' => '\d+'], methods: ['POST'])]
     public function deletesubCategory(SubCategory $subCategory, Request $request, SubCategoryRepository $subCategoryRepository): RedirectResponse
     {
@@ -301,6 +304,4 @@ class AdminController extends AbstractController
         ]);
     }
     
-
-
 }
