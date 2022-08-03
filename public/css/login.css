@@ -1,93 +1,84 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap);
+
+
 body {
-    font-size: 16px;
-    margin: 0;
-    height: 100vh;   
-}
-
-main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-main section {
-    width: 50%;
-}
-
-/**
-* Image
-*/
-
-.image {
-    background: url(../images/qualideco.png) center no-repeat;
+    background-image: url(../images/pot-de-peinture.jpg);
     background-size: cover;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
+    background-repeat : no-repeat;
+    height: 100vh;
 }
 
-
-/**
-* Formulaire
-*/
-
-
-.connexion form {
-    width: 50%;
-    margin: auto;
+.login-box {
+    background: url(../images/73BxBuI.png);
+    background-size: cover;
+    background-position: center;
+    padding: 50px;
+    margin: 50px auto;
+    min-height: 700px;
+    -webkit-box-shadow: 0 2px 60px -5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 60px -5px rgba(0, 0, 0, 0.1);
 }
 
-.connexion form h1{
-    font-size: 2.3rem;
+.logo {
+    font-family: "Script MT";
+    font-size: 54px;
+    text-align: center;
+    color: #888888;
+    margin-bottom: 50px;
 }
 
-.connexion form label {
-    display: block;
-    font-size: 0.85rem;
-    margin-bottom: 2px;
+.logo .logo-font {
+    color: red;
 }
 
-.connexion form input {
-    display: block;
-    border: 1px solid lightgray;
-    border-radius: 4px;
-    margin-bottom: 16px; 
+.logo .logo-l {
+	color: rgb(172, 172, 62);
 }
 
-.connexion form button{
-    background-color: blue;
-    color: white;
-    border-radius: 4px;
-    padding: 12px 0;
-    border: 0;
-    width: 100%;
-
+.header-title {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
-.connexion form a {
-    border: 1px solid lightgrey;
-    display: flex;
-    color: black;
-    font-size: 0.9rem;
-    gap: 10px;
-    padding: 10px 0;
-    border-radius: 4px;
-    margin-top: 12px;
+.login-form {
+    max-width: 300px;
+    margin: 0 auto;
 }
 
-@media (max-width: 1200px) {
-    .image {
+.login-form .form-control {
+    border-radius: 0;
+    margin-bottom: 30px;
+}
+
+.login-form .form-group {
+    position: relative;
+}
+
+.login-form .form-group .forgot-password {
+    position: absolute;
+    top: 6px;
+    right: 15px;
+}
+
+.login-form .btn {
+    border-radius: 0;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.login-form .btn.btn-primary {
+    background: #3BC3FF;
+    border-color: #31c0ff;
+	border-radius: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+    .hide-on-mobile {
         display: none;
+		
     }
-
-    .connexion form {
-        width: 100%;
+	.logo {
+        font-size: 34px;
     }
-
-    
-
-    
 }
-

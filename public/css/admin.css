@@ -23,4 +23,16 @@ body {
     background-image: url(../images/imagesdefond.png);
     background-size: cover;
     background-repeat : no-repeat;
+    height: 100vh;
+}
+
+@media only screen and (max-width: 767px) {
+    h1{
+        font-size: 1.6rem !important;
+    }
+
+    .formframe{
+        width: 90vw !important;
+        margin-top: 30%;
+    }
 }
