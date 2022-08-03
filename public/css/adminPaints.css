@@ -23,7 +23,7 @@ body {
     background-image: url(../images/imagesdefond.png);
     background-size: cover;
     background-repeat : no-repeat;
-    height: 100vh;
+    height: 100%;
 }
 
 @media only screen and (max-width: 767px) {
@@ -32,7 +32,6 @@ body {
     }
 
     .formframe{
-        width: 90vw !important;
-        margin-top: 30%;
+        width: 95vw !important;
     }
 }

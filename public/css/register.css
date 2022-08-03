@@ -1,0 +1,22 @@
+body {
+    background-image: url(../images/imagesdefond.png);
+    background-size: cover;
+    background-repeat : no-repeat;
+    height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background-color: rgba(0,0,0,0.2);
+    text-align: center;
+    border-radius: 20px;
+    padding: 40px;
+    color: #fff;
+    box-sizing: border-box;
+} 
+
+.captcha {
+	max-width: 305px; 
+	margin: 0 auto; 
+}

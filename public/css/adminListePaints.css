@@ -1,0 +1,13 @@
+@media only screen and (max-width: 770px) {
+    .destination{
+        display: none !important;
+    }
+    .features{
+        display: none !important;
+    }
+
+    #edit, #delete, #detail {
+        width: 100px !important;
+        margin: 2px;
+    }
+}
