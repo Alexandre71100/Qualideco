@@ -43,14 +43,17 @@ footer{
 @media screen and (max-width: 1280px) {
     .card{
         width: 200px;
+        display: flex;
         align-items: center;
-
+        justify-content: center;
+        
     }
 
-    }
+ 
 
     .footer{
         padding: 10rem;
     }
 
 
+}

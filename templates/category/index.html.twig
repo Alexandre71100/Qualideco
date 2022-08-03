@@ -9,11 +9,17 @@
 {% block title %} Category{% endblock %}
 
 {% block body %}
+
+  <main class="container py-5">
+    <section class="row">
+
 {% for category in categorys %}
-        <div class="card-body">
-          <div class="card display-flex" style="width: 18rem;">
+<div class="card-groug col-4 py-5">
+  <div class="card text-center mb-3 py-5 ">
     <a href="{{ path('app_category_id', { id: category.id }) }}" class="text-decoration-none btn btn-">{{ category.name }}</a>
+  </div>
     </div>
-      </div>
 {% endfor %}
+</section>
+</main>
 {% endblock %}

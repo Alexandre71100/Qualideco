@@ -1,4 +1,5 @@
 body{
-    background-color: rgb(130, 56, 199);
+    background-image: url(../images/imagedefond45.png);
+    background-size: cover;
+    background-repeat : no-repeat;
 }
-
