@@ -173,12 +173,24 @@ class Paints
         return $this;
     }
 
-    public function getCategory(): ?Category
+    // public function getCategory_id()
+    // {
+    //     return $this->category_id;
+    // }
+
+    // public function setCategory_id($category_id)
+    // {
+    //     $this->category_id = $category_id;
+
+    //     return $this;
+    // }
+
+    public function getCategory()
     {
         return $this->category;
     }
 
-    public function setCategory(?Category $category): self
+    public function setCategory($category)
     {
         $this->category = $category;
 

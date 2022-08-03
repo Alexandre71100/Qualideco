@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap');
+
+*{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 15px;
+}
+
+
+nav{
+    margin: 0 rem 0 4rem;
+    
+}
+
+nav ul li{
+    font-size: 1.2rem;
+}
+main h1{
+    padding: 20px;
+}
+
+main p{
+    font-size: 20px;
+}
+
+img{
+    align-items: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.btn{
+  margin-top: 20px;
+   
+}
+
+footer{
+    padding: 5rem;
+}
+
+@media screen and (max-width: 1280px) {
+    .card{
+        width: 150%;
+        align-items: center;
+        justify-content: center;
+    }
+ 
+    
+   
+
+ 
+
+    .footer{
+        padding: 10rem;
+    }
+
+
+}
