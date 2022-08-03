@@ -37,7 +37,7 @@ class CategoryController extends AbstractController
     {
         
         $paints = $paginatorInterface->paginate(
-            $idtest = $paintsRepository->findBy(array('category_id' => $id)),
+            $idtest = $paintsRepository->findBy(array('category' => $id)),
             $request->query->getInt('page', 1),
             5
         );

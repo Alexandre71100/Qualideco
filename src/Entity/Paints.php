@@ -61,7 +61,7 @@ class Paints
     #[Assert\NotBlank(message:"La catégorie de la peinture est obligatoire")]
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'paints')]
     #[ORM\JoinColumn(nullable: true)]
-    private $category_id;
+    private $category;
 
     #[ORM\ManyToOne(targetEntity: SubCategory::class, inversedBy: 'paints')]
     #[ORM\JoinColumn(nullable: true)]
@@ -173,14 +173,26 @@ class Paints
         return $this;
     }
 
-    public function getCategory_id()
+    // public function getCategory_id()
+    // {
+    //     return $this->category_id;
+    // }
+
+    // public function setCategory_id($category_id)
+    // {
+    //     $this->category_id = $category_id;
+
+    //     return $this;
+    // }
+
+    public function getCategory()
     {
-        return $this->category_id;
+        return $this->category;
     }
 
-    public function setCategory_id($category_id)
+    public function setCategory($category)
     {
-        $this->category_id = $category_id;
+        $this->category = $category;
 
         return $this;
     }
