@@ -42,12 +42,13 @@ footer{
 
 @media screen and (max-width: 1280px) {
     .card{
-        width: 200px;
-        display: flex;
+        width: 150%;
         align-items: center;
         justify-content: center;
-        
     }
+ 
+    
+   
 
  
 
