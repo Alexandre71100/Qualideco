@@ -74,6 +74,9 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('captcha', ReCaptchaType::class, [
                 'required' => false,
+                'attr' => array(
+                    'class' => 'captcha'
+                )
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Ouvrir mon compte'

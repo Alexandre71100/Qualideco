@@ -264,6 +264,7 @@ class AdminController extends AbstractController
     }
 
 
+    
     #[Route('/paint/delete/{id}', name:'paint_delete', requirements: ['id' => '\d+'], methods: ['POST'])]
     public function deletePaint(Paints $paints, Request $request, PaintsRepository $paintsRepository): RedirectResponse
     {

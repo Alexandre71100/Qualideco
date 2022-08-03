@@ -17,7 +17,7 @@ btnDelete.forEach(btn => {
     // Récupère le bouton de suppression de la modale vie une classe CSS
     const modalDelete = document.querySelector('.btn-delete-modal');
 
-    // Récupère lle champ caché qui recevra la valeur du jeton CSRF
+    // Récupère le champ caché qui recevra la valeur du jeton CSRF
     const modalToken = document.querySelector('.input-token-csrf');
 
     // Attribue la valeur du href du bouton de suppression à l'action du formulaire de la modale

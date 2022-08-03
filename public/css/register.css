@@ -15,3 +15,8 @@ body {
     color: #fff;
     box-sizing: border-box;
 } 
+
+.captcha {
+	max-width: 305px; 
+	margin: 0 auto; 
+}

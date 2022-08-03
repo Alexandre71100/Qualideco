@@ -2,86 +2,91 @@
 
 {% block title %}Les catégories{% endblock %}
 
+{% block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="/css/adminListes.css">
+{% endblock %}
+
 {% block body %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class='container'>
-        <a href="{{ path('app_home') }}" class="navbar-brand">Qualideco</a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-            <div class="navbar-nav">
-                <a href="{{ path('app_admin') }}" class="nav-item nav-link active">Administration</a>
-                <a href="{{ path('app_new_subcategory') }}" class="nav-item nav-link active">Ajout d'une sous catégorie</a>
-            </div>
-            <form class="d-flex">
-                <div class="input-group">                    
-                    <input type="text" class="form-control" placeholder="Recherche">
-                    <button type="button" class="btn btn-secondary"><i class="bi-search"></i>Recherche</button>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class='container'>
+            <a href="{{ path('app_home') }}" class="navbar-brand">Qualideco</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a href="{{ path('app_admin') }}" class="nav-item nav-link active">Administration</a>
+                    <a href="{{ path('app_new_subcategory') }}" class="nav-item nav-link active">Ajout d'une sous catégorie</a>
                 </div>
-            </form>
+                <form class="d-flex">
+                    <div class="input-group">                    
+                        <input type="text" class="form-control" placeholder="Recherche">
+                        <button type="button" class="btn btn-secondary"><i class="bi-search"></i>Recherche</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<header>
-    <h1 class='text-center py-3'> Liste des sous catégories </h1>
-</header>
+    <header>
+        <h1 class='text-center py-3'> Liste des sous catégories </h1>
+    </header>
 
 
-<div class='container'>
-{% for message in app.flashes('success') %}
-    <div class="alert alert-success text-center" role="alert">
-        {{ message }}
+    <div class='container'>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success text-center" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
 
-    </div>
-{% endfor %}
-
-    <table class="table">
-        <thead>
-            <tr class="table-warning text-center">
-                <th>ID</th>
-                <th>Nom catégorie</th>
-                <th>Nom sous catégorie</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody class='text-center'>
-            {% for subCategory in subCategories %}
-                <tr>
-                    <td class="py-3">
-                        <div>
-                            {{ subCategory.id }}
-                        </div>
-                    </td>
-                    <td class="py-3">
-                        <div>
-                            {{ subCategory.name }}
-                        </div>
-                    </td>
-                    <td class="py-3">
-                        <div>
-                            {{ subCategory.category }}
-                        </div>
-                    </td>
-                    <td> 
-                        <a href="{{ path('app_edit_subcategory', { id: subCategory.id }) }}" title="Editer cette catégorie" class="btn btn-sm btn-outline-secondary">Editer</a>
-                        
-                        <form action="{{ path('subCategory_delete', { id: subCategory.id }) }}" method="post" class="d-inline">
-                            <input type="hidden" name="token" value="{{ csrf_token('delete-subCategory-'~ subCategory.id) }}">
-                            <button class="btn btn-sm btn-outline-danger">Supprimer</button>
-                        </form>    
-                    </td>
+        <table class="table">
+            <thead>
+                <tr class="table-warning text-center">
+                    <th>ID</th>
+                    <th>Nom catégorie</th>
+                    <th>Nom sous catégorie</th>
+                    <th>Action</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-    {{ knp_pagination_render(subCategories, null, {}, {
-        'align': 'center',
-        'size': 'large',
-        'rounded': true,
-    }) }}
+            </thead>
+            <tbody class='text-center'>
+                {% for subCategory in subCategories %}
+                    <tr>
+                        <td class="py-3">
+                            <div>
+                                {{ subCategory.id }}
+                            </div>
+                        </td>
+                        <td class="py-3">
+                            <div>
+                                {{ subCategory.name }}
+                            </div>
+                        </td>
+                        <td class="py-3">
+                            <div>
+                                {{ subCategory.category }}
+                            </div>
+                        </td>
+                        <td> 
+                            <a href="{{ path('app_edit_subcategory', { id: subCategory.id }) }}" title="Editer cette catégorie" class="btn btn-sm btn-outline-secondary" id="edit">Editer</a>
+                            
+                            <form action="{{ path('subCategory_delete', { id: subCategory.id }) }}" method="post" class="d-inline">
+                                <input type="hidden" name="token" value="{{ csrf_token('delete-subCategory-'~ subCategory.id) }}">
+                                <button class="btn btn-sm btn-outline-danger" id="delete">Supprimer</button>
+                            </form>    
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+        {{ knp_pagination_render(subCategories, null, {}, {
+            'align': 'center',
+            'size': 'small',
+            'rounded': true,
+        }) }}
 
 {% endblock %}
