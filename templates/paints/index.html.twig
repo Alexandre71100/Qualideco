@@ -14,9 +14,8 @@
        <section class="row">
        <h1 class="text-center fs-2 py-5">Liste de tous les peintures</h1>
       {% for paint in paints %}
-
-        <div class="col-4 py-5">
-                <div class="card">
+       <div class="col-4 py-5">
+            <div class="card">
                 <div class="card-body text-center">
                     <h3 class="text-center card-title">{{ paint.title }}</h3>
                     <img src="{{ vich_uploader_asset(paint, 'coverFile')|imagine_filter('vignette') }}" alt="Image">
@@ -24,8 +23,8 @@
                     Voir la fiche produit
                     </a>
                 </div>
-               </div>
             </div>
+        </div>
    {% endfor %}
    </section>
    </main>
@@ -34,22 +33,9 @@
         'size': 'large',
         'rounded': true,
     }) }}
-   <footer>
-   <div class="text-center p-4">
-   @ 2022 copyright
-   </footer>
-   </div>
-   {% endblock %}
-   
-
-
-
-       
-
-
-
-
-
-
-
-   
+	<footer>
+		<div class="text-center p-4">
+			@ 2022 copyright
+		</footer>
+	</div>
+{% endblock %}
