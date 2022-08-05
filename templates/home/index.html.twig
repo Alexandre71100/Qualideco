@@ -9,12 +9,22 @@
 {% endblock %}
 
 {% block body %}
-	{{ include('component/navbar.html.twig') }}
+	<div class="m-auto py-5">
+		{{ include('component/navbar.html.twig') }}
+	</div>
+	<div class="m-auto py-5">
 	{{ include('component/carousel.html.twig') }}
+	</div>
+	<div>
 	{{ include('component/AboutUs.html.twig') }}
+	</div>
+	<div>
 	{{ include('component/category.html.twig') }}
+	</div>
+	<div class="m-auto py-5">
 	{{ include('component/contact.html.twig') }}
+	</div>
 	<hr>
 	{{ include('component/footer.html.twig') }}
-	
+
 {% endblock %}

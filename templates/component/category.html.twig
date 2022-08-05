@@ -1,25 +1,9 @@
-{% block title %}
-	
-{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
-	<main class="container">
-		<section class="row">
-			<div class="col-12">
-				<h1 class="text-center">hot sales 🔥</h1>
-			</div>
-			{% for paint in paints %}
-				<div class="col-4 py-5">
-					<div class="card h-100">
-						<div class="card-body">
-							<h3 class="card-title">{{ paint.title }}</h3>
-							<a href="#" class="btn btn-warning">Voir la fiche produit</a>
-						</div>
-					</div>
-					<a href="#"></a>
-				</div>
-			{% endfor %}
-		</section>
-	</main>
-	
+	<div class="container">
+		<div class="row">
+			<iframe class=" m-auto py-5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2756.8894655836216!2d4.799891615845646!3d46.29217008583424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f36cef813bc5ff%3A0x7019633dfe25a1d4!2sQualideco!5e0!3m2!1sfr!2sfr!4v1658925080542!5m2!1sfr!2sfr" width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</div>
+	</div>
 {% endblock %}

@@ -69,9 +69,18 @@ class BasketController extends AbstractController
     }
 
     #[Route('/basket/mail', name: 'app_basket_mail')]
-    public function mail(MailerInterface $mailer){
+    public function sendEmail(MailerInterface $mailer): Response
+    {
+        $email = (new Email())
+            ->from('qualidecomacon@outlook.fr')
+            ->to('you@example.com')
+            ->subject('Votre commande a été bien faite')
+            ->text('Merci pour votre commande, votre commande sera bientôt là')
+            ->html("app_basket");
 
-        
+        $mailer->send($email);
 
+        // ...
     }
 }
+
