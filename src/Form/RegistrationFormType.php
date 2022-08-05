@@ -39,6 +39,15 @@ class RegistrationFormType extends AbstractType
                     ])
                 ]
             ])
+            ->add('address', TextType::class, [
+                'label' => 'Adresse',
+                'required' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'L\'adresse et obligatoire'
+                    ])
+                ]
+            ])
             ->add('email', EmailType::class, [
                 'label' => 'Adresse e-mail',
                 'required' => false,

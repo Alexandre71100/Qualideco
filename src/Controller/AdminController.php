@@ -197,6 +197,7 @@ class AdminController extends AbstractController
       * Peinture
       */
 
+    // Liste des peintures
     #[Route('/admin/paint', name: 'app_paint')]
     public function listingPaint(PaintsRepository $paintsRepository, PaginatorInterface $paginatorInterface, Request $request): Response
     {
@@ -212,6 +213,7 @@ class AdminController extends AbstractController
         ]);
     }
 
+    // Formulaire d'ajout d'une sous Catégorie
     #[Route('/admin/newpaint', name: 'app_new_paint')]
     public function newPaint(Request $request, PaintsRepository$paintsRepository): Response
     {
@@ -232,6 +234,7 @@ class AdminController extends AbstractController
     }
 
 
+    // Edition d'une Peinture
     #[Route('/admin/paint/edit/{id}', name: 'app_edit_paint', requirements: ['id' => '\d+'])]
     public function editPaint(Paints $paints, Request $request, PaintsRepository $paintsRepository): Response
     {
@@ -250,14 +253,10 @@ class AdminController extends AbstractController
         ]);
     }
 
+    // Détail d'une Peinture
     #[Route('/admin/paints/{id}', name: 'details_paints', requirements:['id' => '\d+'])]
     public function details(Paints $paints): Response
     {
-		/**
-		 * Grâce à l'injection de dépendance et à l'ID passée en paramètre de la requête, Doctrine effectue la
-		 * sélection en BDD de manière automatique. Si l'ID est inexistant, une erreur 404 est retournée.
-		 */
-
         return $this->render('admin/paint/detailspaint.html.twig', [
             'paints' => $paints
         ]);

@@ -1,7 +1,9 @@
-#edit{
+#edit, #delete{
     width: 80px !important;
 }
 
-#delete{
-    width: 80px !important;
+@media only screen and (max-width: 770px) {
+    #edit, #delete{
+        margin: 2px;
+    }
 }
