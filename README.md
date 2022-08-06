@@ -25,3 +25,7 @@ Cloner le projet et exécuter les lignes de commandes suivantes :
 * symfony console doctrine:schema:update --force
 * npm install
 * npm run build
+
+<!-- Basket -->
+
+* php bin/console debug:autowiring session

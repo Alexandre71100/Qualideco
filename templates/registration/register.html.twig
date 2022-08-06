@@ -2,18 +2,31 @@
 
 {% block title %}Ouvrir un compte{% endblock %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('css/register.css') }}" rel="stylesheet">   
+{% endblock %}
+
 {% block body %}
-    <div class="w-50 mx-auto">
-        <div class="d-flex align-items-center justify-content-between pb-5">
-            <div>
-                <h1 class="display-5 m-0">Inscription</h1>
+    <div class="pt-4">
+        <div class="container">
+            <div class="pb-4">
+                <h1 class="display-5 m-0 text-center">Inscription</h1>
             </div>
+
+            {% for flash_error in app.flashes('verify_email_error') %}
+                <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+            {% endfor %}
+
+            {{ form(registrationForm) }}
+
+
+            <div class="form-group">
+                <div class="text-center">
+                    Déja inscrit? <a href="{{ path('app_login') }}">Se connecter maintenant</a>
+                </div>
+            </div>
+
         </div>
-
-        {% for flash_error in app.flashes('verify_email_error') %}
-            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-        {% endfor %}
-
-        {{ form(registrationForm) }}
     </div>
 {% endblock %}

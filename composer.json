@@ -11,6 +11,7 @@
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.12",
+        "dompdf/dompdf": "^2.0",
         "knplabs/knp-paginator-bundle": "^5.8",
         "liip/imagine-bundle": "^2.8",
         "phpdocumentor/reflection-docblock": "^5.3",
@@ -46,7 +47,8 @@
         "symfony/yaml": "6.1.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0",
-        "vich/uploader-bundle": "^1.19"
+        "vich/uploader-bundle": "^1.19",
+        "victor-prdh/recaptcha-bundle": "^1.6"
     },
     "config": {
         "allow-plugins": {

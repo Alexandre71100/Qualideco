@@ -1,27 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Paints {% endblock %}
 
+{% block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="/css/paints.css">
+{% endblock %}
+
+
+{% block title %} Paints{% endblock %}
 
 {% block body %}
-    <main class="container">
+    <main class="container py-5">
        <section class="row">
-       <div class="col-12">
-      <h1 class="text-center">Paints</h1>
-      <p class="text-center">Liste de tous les peintures</p>
-      </div>
+       <h1 class="text-center fs-2 py-5">Liste de tous les peintures</h1>
       {% for paint in paints %}
-      <div class="col-4 py-5">
-      <div class="card h-100">
-      <div class="card-body">
-      <h3 class="card-title">{{ paint.title }}</h3>
-      <img src="{{ vich_uploader_asset(paint, 'coverFile')|imagine_filter('vignette') }}" alt="Image">
-
-      <a href="#" class="btn btn-warning">Voir la fiche produit</a>
-   </div>
-   </div>
-   <a href="#"></a>
-   </div> 
+       <div class="col-4 py-5">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3 class="text-center card-title">{{ paint.title }}</h3>
+                    <img src="{{ vich_uploader_asset(paint, 'coverFile')|imagine_filter('vignette') }}" alt="Image">
+                    <a href="{{ path('ficheproduit_paints', { id: paint.id }) }}" class="btn btn-warning">
+                    Voir la fiche produit
+                    </a>
+                </div>
+            </div>
+        </div>
    {% endfor %}
    </section>
    </main>
@@ -30,22 +33,9 @@
         'size': 'large',
         'rounded': true,
     }) }}
-   <footer>
-   <div class="text-center p-4">
-   @ 2022 copyright
-   </footer>
-   </div>
-   {% endblock %}
-   
-
-
-
-       
-
-
-
-
-
-
-
-   
+	<footer>
+		<div class="text-center p-4">
+			@ 2022 copyright
+		</footer>
+	</div>
+{% endblock %}

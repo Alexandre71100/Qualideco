@@ -51,7 +51,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-    // Formulaire d'ajout d'un Catégorie
+    // Formulaire d'ajout d'une Catégorie
     #[Route('/admin/newCategory', name: 'app_new_category')]
     public function newCategory(Request $request, CategoryRepository $categoryRepository): Response
     {
@@ -90,6 +90,7 @@ class AdminController extends AbstractController
         ]);
     }
 
+    // Suppression d'une Catégorie
     #[Route('/admin/category/delete/{id}', name:'category_delete', requirements: ['id' => '\d+'], methods: ['POST'])]
     public function deleteCategory(Category $category, Request $request, CategoryRepository $categoryRepository): RedirectResponse
     {
@@ -115,6 +116,7 @@ class AdminController extends AbstractController
      * Sous-Catégorie
      */
 
+    // Liste sous Catégorie
     #[Route('/admin/subcategory', name: 'app_subCategory')]
     public function listingsubCategory(SubCategoryRepository $subCategoryRepository, PaginatorInterface $paginatorInterface, Request $request): Response
     {
@@ -130,7 +132,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-
+    // Formulaire d'ajout d'une sous Catégorie
     #[Route('/admin/newsubCategory', name: 'app_new_subcategory')]
     public function newsubCategory(Request $request, SubCategoryRepository $subCategoryRepository): Response
     {
@@ -150,7 +152,7 @@ class AdminController extends AbstractController
         ]);
     }
 
-
+    // Edition d'une sous Catégorie
     #[Route('/admin/subcategory/edit/{id}', name: 'app_edit_subcategory', requirements: ['id' => '\d+'])]
     public function editsubCategory(SubCategory $subCategory, Request $request, SubCategoryRepository $subCategoryRepository): Response
     {
@@ -169,6 +171,7 @@ class AdminController extends AbstractController
         ]);
     }
 
+    // Suppression d'une sous Catégorie
     #[Route('/admin/subCategory/delete/{id}', name:'subCategory_delete', requirements: ['id' => '\d+'], methods: ['POST'])]
     public function deletesubCategory(SubCategory $subCategory, Request $request, SubCategoryRepository $subCategoryRepository): RedirectResponse
     {
@@ -194,6 +197,7 @@ class AdminController extends AbstractController
       * Peinture
       */
 
+    // Liste des peintures
     #[Route('/admin/paint', name: 'app_paint')]
     public function listingPaint(PaintsRepository $paintsRepository, PaginatorInterface $paginatorInterface, Request $request): Response
     {
@@ -209,6 +213,7 @@ class AdminController extends AbstractController
         ]);
     }
 
+    // Formulaire d'ajout d'une sous Catégorie
     #[Route('/admin/newpaint', name: 'app_new_paint')]
     public function newPaint(Request $request, PaintsRepository$paintsRepository): Response
     {
@@ -229,6 +234,7 @@ class AdminController extends AbstractController
     }
 
 
+    // Edition d'une Peinture
     #[Route('/admin/paint/edit/{id}', name: 'app_edit_paint', requirements: ['id' => '\d+'])]
     public function editPaint(Paints $paints, Request $request, PaintsRepository $paintsRepository): Response
     {
@@ -247,20 +253,17 @@ class AdminController extends AbstractController
         ]);
     }
 
+    // Détail d'une Peinture
     #[Route('/admin/paints/{id}', name: 'details_paints', requirements:['id' => '\d+'])]
     public function details(Paints $paints): Response
     {
-		/**
-		 * Grâce à l'injection de dépendance et à l'ID passée en paramètre de la requête, Doctrine effectue la
-		 * sélection en BDD de manière automatique. Si l'ID est inexistant, une erreur 404 est retournée.
-		 */
-
         return $this->render('admin/paint/detailspaint.html.twig', [
             'paints' => $paints
         ]);
     }
 
 
+    
     #[Route('/paint/delete/{id}', name:'paint_delete', requirements: ['id' => '\d+'], methods: ['POST'])]
     public function deletePaint(Paints $paints, Request $request, PaintsRepository $paintsRepository): RedirectResponse
     {
@@ -301,6 +304,4 @@ class AdminController extends AbstractController
         ]);
     }
     
-
-
 }
