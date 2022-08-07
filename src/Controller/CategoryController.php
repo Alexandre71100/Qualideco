@@ -23,7 +23,7 @@ class CategoryController extends AbstractController
             $request->query->getInt('numbers', 7)
         );
 
-        //$category = $categoryRepository->findAll();
+      
     
 
         return $this->render('category/index.html.twig', [

@@ -21,7 +21,9 @@
                     <img src="{{ vich_uploader_asset(paint, 'coverFile')|imagine_filter('vignette') }}" alt="Image">
                     <a href="{{ path('ficheproduit_paints', { id: paint.id }) }}" class="btn btn-warning">
                     Voir la fiche produit
-                    </a>
+                   <a href="{{ path('ficheproduit_paints', { id: paint.id }) }}" class="btn btn-success">
+                    Ajouter
+                   </a>
                 </div>
             </div>
         </div>
@@ -36,6 +38,6 @@
 	<footer>
 		<div class="text-center p-4">
 			@ 2022 copyright
-		</footer>
-	</div>
+    </footer>
+	    </div>
 {% endblock %}
