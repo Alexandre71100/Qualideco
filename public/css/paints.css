@@ -24,21 +24,20 @@ footer{
     padding: 5rem;
 }
 
-@media screen and (max-width: 1280px) {
+@media only screen and (max-width: 767px) {
     .card{
-        width: 150%;
-        align-items: center;
-        justify-content: center;
-    }
- 
+    width: 150%;
+    align-items: center;
     
-   
-
- 
-
-    .footer{
-        padding: 10rem;
     }
+
+    h3{
+      width: 20em;
+      
+        
+    }
+
+
 
 
 }
