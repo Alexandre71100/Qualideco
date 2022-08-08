@@ -25,19 +25,17 @@ footer{
 }
 
 @media only screen and (max-width: 767px) {
+
     .card{
-    width: 150%;
+    width: 150% !important;
+    
     align-items: center;
     
     }
-
-    h3{
-      width: 20em;
+    
       
-        
-    }
-
-
-
-
 }
+
+
+
+
