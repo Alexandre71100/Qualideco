@@ -32,31 +32,37 @@
     <table class="table">
         <thead>
             <tr class="table-warning">
-                <th>ID</th>
-                <th>Création</th>
-                <th>peinture</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Peinture</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
             {% for reservation in reservations %}
                 <tr>
-                    <td class="py-12">
+                    <td class="py-3">
                         <div class="d-flex align-items-center">
-                            {{ reservation.id }}
+                            {{ reservation.users.lastname }}  {{reservation.users.firstname}}
                         </div>
                     </td>
-                    <td class="py-12">
+                    <td class="py-3">
                         <div class="d-flex align-items-center">
-                            {{ reservation.createdAt }}
+                            {{ reservation.users.email }}
                         </div>
                     </td>
-                    <td class="py-12">
+                    <td class="py-3">
                         <div class="d-flex align-items-center">
-                            {{ reservation.paints }}
+                            {{ reservation.users.phone }}
                         </div>
                     </td>
-                    <td> 
+                    <td class="py-3">
+                        <div class="d-flex align-items-center">
+                            {{ reservation.paints.title }}
+                        </div>
+                    </td>
+                    <td class="py-3">
                         <a href="" title="Editer cette catégorie" class="btn btn-sm btn-outline-secondary">Editer</a>
                         
                         <form action="" method="post" class="d-inline">

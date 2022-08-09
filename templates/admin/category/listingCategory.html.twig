@@ -2,11 +2,10 @@
 
 {% block title %}Les catégories{% endblock %}
 
-    {% block javascripts %}
-    {# Récupère le contenu de block "javascripts" de la base.html.twig pour éviter que son contenu ne soit écrasé par celui-ci #}
-    {{ parent() }}
-    <script src="{{ asset('js/deleteCategory.js') }}"></script>
-    {% endblock %}
+{% block stylesheets %}
+    {{parent()}}
+    <link rel="stylesheet" href="/css/adminSubCategoryListes.css">
+{% endblock %}
 
 {% block body %}
 
@@ -65,11 +64,11 @@
                             </div>
                         </td>
                         <td class='py-3'> 
-                            <a href="{{ path('app_edit_category', { id: category.id }) }}" title="Editer cette catégorie" class="btn btn-sm btn-outline-secondary">Editer</a>
+                            <a href="{{ path('app_edit_category', { id: category.id }) }}" title="Editer cette catégorie" id="edit" class="btn btn-sm btn-outline-secondary">Editer</a>
                             
                             <form action="{{ path('category_delete', { id: category.id }) }}" method="post" class="d-inline">
                                 <input type="hidden" name="token" value="{{ csrf_token('delete-category-'~ category.id) }}">
-                                <button class="btn btn-delete btn-sm btn-outline-danger">Supprimer</button>
+                                <button class="btn btn-delete btn-sm btn-outline-danger" id="delete">Supprimer</button>
                             </form>    
                         </td>
                     </tr>

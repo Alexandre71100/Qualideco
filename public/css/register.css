@@ -1,8 +1,16 @@
 body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.background {
     background-image: url(../images/imagesdefond.png);
     background-size: cover;
     background-repeat : no-repeat;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
 }
 
 .container {
@@ -16,7 +24,38 @@ body {
     box-sizing: border-box;
 } 
 
-.captcha {
-	max-width: 305px; 
-	margin: 0 auto; 
+@media only screen and (max-width: 900px) {
+    .background{
+        height: 100% !important;
+        width: auto;
+    }
 }
+
+@media only screen and (max-width: 1100px) {
+
+    .background{
+        height: 100vh !important;
+        width: auto;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .background{
+        height: 100vh !important; 
+        width: auto;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .background{
+        height: 100vh !important;
+        width: auto;
+    }
+}
+
+/* @media only screen and (max-width: 1400px) {
+    .background{
+        height: 100% !important;
+        width: auto;
+    }
+} */

@@ -38,7 +38,7 @@ class AdminController extends AbstractController
 
     // Liste Catégorie
     #[Route('/admin/category', name: 'app_admin_category')]
-    public function listingCategoty(CategoryRepository $categoryRepository, PaginatorInterface $paginatorInterface, Request $request): Response
+    public function listingCategory(CategoryRepository $categoryRepository, PaginatorInterface $paginatorInterface, Request $request): Response
     {
         $categories = $paginatorInterface->paginate(
             $categoryRepository->findAll(),

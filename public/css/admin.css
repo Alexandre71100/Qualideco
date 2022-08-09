@@ -23,16 +23,52 @@ body {
     background-image: url(../images/imagesdefond.png);
     background-size: cover;
     background-repeat : no-repeat;
-    height: 100vh;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.background {
+    height: 100vh !important;
+    width: 100% !important;
 }
 
 @media only screen and (max-width: 767px) {
+    h1{
+        font-size: 1.4rem !important;
+    }
+
+    .formframe{
+        width: 90vw !important;
+        margin-top: 20%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    h1{
+        font-size: 1.5rem !important;
+    }
+
+    .formframe{
+        width: 80vw !important;
+        margin-top: 20%;
+    }
+}
+
+
+@media only screen and (max-width: 1200px) {
     h1{
         font-size: 1.6rem !important;
     }
 
     .formframe{
-        width: 90vw !important;
-        margin-top: 30%;
+        width: 80vw !important;
+        margin-top: 20%;
+    }
+}
+
+
+@media only screen and (max-width: 400px) {
+    h1{
+        font-size: 1.2rem !important;
     }
 }

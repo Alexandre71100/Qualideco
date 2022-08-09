@@ -21,7 +21,6 @@ class Paints
     private $id;
 
     #[Assert\NotBlank(message:"Le titre de la peinture est obligatoire")]
-
     #[ORM\Column(type: 'string', length: 80)]
     private $title;
 
@@ -172,18 +171,6 @@ class Paints
 
         return $this;
     }
-
-    // public function getCategory_id()
-    // {
-    //     return $this->category_id;
-    // }
-
-    // public function setCategory_id($category_id)
-    // {
-    //     $this->category_id = $category_id;
-
-    //     return $this;
-    // }
 
     public function getCategory()
     {

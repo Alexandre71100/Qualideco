@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block body %}
+<div class="background">
     <div class="pt-4">
         <div class="container">
             <div class="pb-4">
@@ -21,12 +22,11 @@
             {{ form(registrationForm) }}
 
 
-            <div class="form-group">
                 <div class="text-center">
                     Déja inscrit? <a href="{{ path('app_login') }}">Se connecter maintenant</a>
                 </div>
-            </div>
 
         </div>
     </div>
+<div>
 {% endblock %}

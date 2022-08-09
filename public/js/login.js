@@ -1,5 +1,5 @@
 function showPassword() {
-    var password = document.getElementById('pwd');
+    var password = document.getElementById('inputPassword');
     if (password.type === 'password') {
         password.type = "text";
     }
