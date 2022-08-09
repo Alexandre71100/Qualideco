@@ -11,21 +11,21 @@
 {% block body %}
 
    <h1 class="display-4 text-center fs-1">{{ paints.title }}</h1>
-    {# <p class="display-6">{{ paints.price }}€</p> #}
+   <p class="display-6 d-flex justify-content-end">{{ paints.price }}€</p> 
     
 
     {% if vich_uploader_asset(paints, 'coverFile') is not null %}
     <div class="text-center">
     <img src="{{ vich_uploader_asset(paints, 'coverFile')|imagine_filter('vignette') }}" alt="Image"> 
     </div>
-    <h2 class="pt-5 fs-1 pb-4">Destination</h2>
+    <h2 class="pt-5 fs-1 pb-4 py-5">Destination</h2>
     <p class="fs-4 ms-5"{{paints.destination|nl2br}}</p>
     
     <h2 class="pt-5 fs-1">Caractéristiques</h2>
     <p class="fs-4 ms-5"{{paints.features|nl2br}}</p>
      
     <h2 class="pt-5 fs-1">Déscription</h2>
-    <p class="pt-5 fs-3 fw-bold">{{paints.description|nl2br}}</p>
+    <p class="pt-4 fs-3 fw-bold ">{{paints.description|nl2br}}</p>
    
 
 
