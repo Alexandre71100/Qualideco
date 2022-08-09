@@ -5,6 +5,9 @@
     font-size: 15px;
 }
 
+ h3{
+   font-size:25px;
+} 
 
  img{
     align-items: center;
@@ -24,14 +27,14 @@ footer{
     padding: 5rem;
 }
 
-@media only screen and (max-width: 767px) {
-
-    .card{
-    width: 150% !important;
+@media only screen and (min-width: 767px) {
     
-    align-items: center;
-    
+   .card{
+    width: 400px;
     }
+    
+    
+       
     
       
 }
