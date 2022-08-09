@@ -20,12 +20,14 @@
 
  .btn{
   margin-top: 20px;
-   
-} 
+  
+}
 
 footer{
     padding: 5rem;
 }
+
+
 
 @media only screen and (min-width: 767px) {
     

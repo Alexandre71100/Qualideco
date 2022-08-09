@@ -39,7 +39,7 @@ class CategoryController extends AbstractController
         $paints = $paginatorInterface->paginate(
             $idtest = $paintsRepository->findBy(array('category' => $id)),
             $request->query->getInt('page', 1),
-            5
+            6
         );
 
         return $this->render('category/categorie.html.twig', [
